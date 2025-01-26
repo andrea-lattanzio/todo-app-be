@@ -3,10 +3,9 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { DatabaseModule } from './config/database/database.module';
 import { ConfigModule } from '@nestjs/config';
-import { TodoModule } from './todo/todo.module';
-
+import { TaskModule } from './task/task.module';
 @Module({
-  imports: [ConfigModule.forRoot({isGlobal: true}), DatabaseModule, TodoModule],
+  imports: [ConfigModule.forRoot({isGlobal: true}), DatabaseModule, TaskModule],
   controllers: [AppController],
   providers: [AppService],
 })
