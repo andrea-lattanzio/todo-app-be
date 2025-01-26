@@ -1,98 +1,119 @@
-import { PrismaClient, Priority, Status } from '@prisma/client';
+import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
 async function main() {
-  const workCategory = await prisma.category.create({
-    data: {
-      name: 'Work',
-      description: 'Tasks related to work',
-    },
+  console.log('Seeding database...');
+
+  // Create Categories
+  const categories = await prisma.category.createMany({
+    data: [
+      { id: 'cat-1', name: 'Work', description: 'Tasks related to work' },
+      {
+        id: 'cat-2',
+        name: 'Personal',
+        description: 'Personal to-dos and goals',
+      },
+      {
+        id: 'cat-3',
+        name: 'Fitness',
+        description: 'Health and fitness-related tasks',
+      },
+    ],
   });
 
-  const personalCategory = await prisma.category.create({
-    data: {
-      name: 'Personal',
-      description: 'Tasks related to personal life',
-    },
+  console.log('Categories created:', categories);
+
+  // Create Tags
+  const tags = await prisma.tag.createMany({
+    data: [
+      { id: 'tag-1', name: 'Urgent', color: '#FF0000' },
+      { id: 'tag-2', name: 'Important', color: '#FFA500' },
+      { id: 'tag-3', name: 'Optional', color: '#008000' },
+    ],
   });
 
-  const urgentTag = await prisma.tag.create({
-    data: {
-      name: 'Urgent',
-      color: '#ff0000',
-    },
-  });
+  console.log('Tags created:', tags);
 
-  const lowPriorityTag = await prisma.tag.create({
-    data: {
-      name: 'Low Priority',
-      color: '#00ff00',
-    },
-  });
-
+  // Create Users
   const user1 = await prisma.user.create({
     data: {
+      id: 'user-1',
       email: 'user1@example.com',
       username: 'user1',
-      password: 'password1',
-      authProviders: 'google',
+      password: 'password123',
+      authProviders: 'local',
+      tasks: {
+        create: [
+          {
+            id: 'task-1',
+            name: 'Complete project report',
+            description: 'Write and submit the quarterly report',
+            dueDate: new Date('2025-02-01T12:00:00Z'),
+            priority: 'HIGH',
+            status: 'IN_PROGRESS',
+            categories: {
+              connect: [{ id: 'cat-1' }],
+            },
+            tags: {
+              connect: [{ id: 'tag-1' }],
+            },
+          },
+          {
+            id: 'task-2',
+            name: 'Buy groceries',
+            description: 'Buy milk, bread, and vegetables',
+            dueDate: new Date('2025-01-28T18:00:00Z'),
+            priority: 'MEDIUM',
+            status: 'PENDING',
+            categories: {
+              connect: [{ id: 'cat-2' }],
+            },
+            tags: {
+              connect: [{ id: 'tag-3' }],
+            },
+          },
+        ],
+      },
     },
   });
 
   const user2 = await prisma.user.create({
     data: {
+      id: 'user-2',
       email: 'user2@example.com',
       username: 'user2',
-      password: 'password2',
-      authProviders: 'facebook',
-    },
-  });
-
-  const task1 = await prisma.task.create({
-    data: {
-      name: 'Finish Project',
-      description: 'Complete the work project by the end of the week',
-      dueDate: new Date('2025-02-01T00:00:00Z'),
-      priority: Priority.HIGH,
-      status: Status.PENDING,
-      category: {
-        connect: { id: workCategory.id },
-      },
-      users: {
-        connect: [{ id: user1.id }, { id: user2.id }],
-      },
-      tag: {
-        connect: { id: urgentTag.id },
-      },
-    },
-  });
-
-  const task2 = await prisma.task.create({
-    data: {
-      name: 'Work',
-      description: 'Urgent',
-      dueDate: new Date('Buy Groceries'),
-      priority: Priority.LOW,
-      status: Status.PENDING,
-      category: {
-        connect: { id: personalCategory.id },
-      },
-      users: {
-        connect: [{ id: user1.id }],
-      },
-      tag: {
-        connect: { id: lowPriorityTag.id },
+      password: 'securepassword456',
+      authProviders: 'local',
+      tasks: {
+        create: [
+          {
+            id: 'task-3',
+            name: 'Morning run',
+            description: 'Run 5km in the morning',
+            dueDate: new Date('2025-01-30T06:00:00Z'),
+            priority: 'CRITICAL',
+            status: 'PENDING',
+            categories: {
+              connect: [{ id: 'cat-3' }],
+            },
+            tags: {
+              connect: [{ id: 'tag-2' }],
+            },
+          },
+        ],
       },
     },
   });
 
-  console.log('Purchase food and supplies for the week');
+  console.log('Users and their tasks created:', { user1, user2 });
+
+  console.log('Database seeding completed!');
 }
 
 main()
   .catch((e) => {
-    console.error(e);
+    console.error('Error during seeding:', e);
     process.exit(1);
   })
   .finally(async () => {

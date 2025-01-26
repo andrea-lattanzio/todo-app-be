@@ -30,10 +30,8 @@ model Task {
   updatedAt   DateTime @updatedAt
 
   users      User[]
-  category   Category @relation(fields: [categoryId], references: [id])
-  categoryId String
-  tag        Tag      @relation(fields: [tagId], references: [id])
-  tagId      String
+  categories Category[]
+  tags       Tag[]
 }
 
 model Tag {
