@@ -22,7 +22,13 @@ async function bootstrap() {
     .setVersion('1.0')
     .addBearerAuth()
     .build();
-  const swaggerDoc = SwaggerModule.createDocument(app, swaggerConfig);
+  const swaggerDoc: OpenAPIObject = SwaggerModule.createDocument(
+    app,
+    swaggerConfig,
+    {
+      deepScanRoutes: true,
+    },
+  );
   SwaggerModule.setup('api/swagger', app, swaggerDoc);
   writeFileSync(
     './openapi/openapi.spec.json',
