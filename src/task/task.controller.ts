@@ -16,6 +16,7 @@ import {
   ApiOperation,
   ApiTags
 } from '@nestjs/swagger';
+import { UuidValidationPipe } from 'src/common/pipes/UUIDValidation.pipe';
 
 @ApiTags('auth')
 @Controller('task')
@@ -56,7 +57,7 @@ export class TaskController {
     description:
       'This endpoint returns a single tag with all the related entities in detail',
   })
-  findOne(@Param('id') id: string) {
+  findOne(@Param('id', UuidValidationPipe) id: string) {
     return this.taskService.findOne(id);
   }
 
@@ -70,7 +71,7 @@ export class TaskController {
     description: 'Updated Task information',
     type: UpdateTaskDto,
   })
-  update(@Param('id') id: string, @Body() updateTaskDto: UpdateTaskDto) {
+  update(@Param('id', UuidValidationPipe) id: string, @Body() updateTaskDto: UpdateTaskDto) {
     return this.taskService.update(id, updateTaskDto);
   }
 
@@ -80,7 +81,7 @@ export class TaskController {
     description:
       'This endpoint removes a task',
   })
-  remove(@Param('id') id: string) {
+  remove(@Param('id', UuidValidationPipe) id: string) {
     return this.taskService.remove(id);
   }
 }
