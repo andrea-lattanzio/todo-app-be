@@ -1,12 +1,20 @@
-import { IsNotEmpty, IsString, IsOptional, IsEnum, IsDateString, IsUUID, IsArray } from 'class-validator';
+import {
+  IsNotEmpty,
+  IsString,
+  IsOptional,
+  IsEnum,
+  IsDateString,
+  IsUUID,
+  IsArray,
+} from 'class-validator';
 
-enum Priority {
+export enum Priority {
   LOW = 'LOW',
   MEDIUM = 'MEDIUM',
   HIGH = 'HIGH',
 }
 
-enum Status {
+export enum Status {
   PENDING = 'PENDING',
   IN_PROGRESS = 'IN_PROGRESS',
   COMPLETED = 'COMPLETED',
@@ -22,7 +30,7 @@ export class CreateTaskDto {
   description: string;
 
   @IsNotEmpty()
-  @IsDateString() 
+  @IsDateString()
   dueDate: string;
 
   @IsEnum(Priority)
@@ -30,27 +38,29 @@ export class CreateTaskDto {
   priority?: Priority = Priority.MEDIUM;
 
   @IsEnum(Status)
-  @IsOptional() 
+  @IsOptional()
   status?: Status = Status.PENDING;
 
-  @IsOptional() 
+  @IsOptional()
   @IsDateString()
   createdAt?: string;
 
-  @IsOptional() 
+  @IsOptional()
   @IsDateString()
   updatedAt?: string;
 
   @IsArray()
-  @IsUUID('all', { each: true }) 
+  @IsUUID('all', { each: true })
   @IsOptional()
   users?: string[];
 
+  @IsArray()
+  @IsUUID('all', { each: true })
   @IsNotEmpty()
-  @IsUUID()
-  categoryId: string;
+  categories: string[];
 
+  @IsArray()
+  @IsUUID('all', { each: true })
   @IsNotEmpty()
-  @IsUUID()
-  tagId: string;
+  tags: string[];
 }

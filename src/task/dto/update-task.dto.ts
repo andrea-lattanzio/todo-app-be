@@ -1,4 +1,74 @@
-import { PartialType } from '@nestjs/mapped-types';
-import { CreateTaskDto } from './create-task.dto';
+import { Type } from 'class-transformer';
+import { Priority, Status } from './create-task.dto';
+import {
+  IsArray,
+  IsDateString,
+  IsEnum,
+  IsNotEmpty,
+  IsOptional,
+  IsString,
+  IsUUID,
+  ValidateNested,
+} from 'class-validator';
 
-export class UpdateTaskDto extends PartialType(CreateTaskDto) {}
+export class UpdateTaskRelationsDto {
+  @IsOptional()
+  @IsArray()
+  @IsUUID('all', { each: true })
+  addTags?: string[];
+
+  @IsOptional()
+  @IsArray()
+  @IsUUID('all', { each: true })
+  removeTags?: string[];
+
+  @IsOptional()
+  @IsArray()
+  @IsUUID('all', { each: true })
+  addCategories?: string[];
+
+  @IsOptional()
+  @IsArray()
+  @IsUUID('all', { each: true })
+  removeCategories?: string[];
+
+  @IsOptional()
+  @IsArray()
+  @IsUUID('all', { each: true })
+  addUsers?: string[];
+
+  @IsOptional()
+  @IsArray()
+  @IsUUID('all', { each: true })
+  removeUsers?: string[];
+}
+
+export class UpdateTaskDto {
+  @IsNotEmpty()
+  @IsString()
+  @IsOptional()
+  name?: string;
+
+  @IsNotEmpty()
+  @IsString()
+  @IsOptional()
+  description?: string;
+
+  @IsNotEmpty()
+  @IsDateString()
+  @IsOptional()
+  dueDate?: string;
+
+  @IsEnum(Priority)
+  @IsOptional()
+  priority?: Priority = Priority.MEDIUM;
+
+  @IsEnum(Status)
+  @IsOptional()
+  status?: Status = Status.PENDING;
+
+  @IsOptional()
+  @ValidateNested()
+  @Type(() => UpdateTaskRelationsDto)
+  updateRelations: UpdateTaskRelationsDto;
+}
