@@ -2,8 +2,6 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateTaskDto } from './dto/create-task.dto';
 import { UpdateTaskDto, UpdateTaskRelationsDto } from './dto/update-task.dto';
 import { PrismaMySqlService } from 'src/config/database/mysql.service';
-import { disconnect } from 'process';
-import { connect } from 'http2';
 @Injectable()
 export class TaskService {
   constructor(private readonly prisma: PrismaMySqlService) {}
@@ -41,7 +39,8 @@ export class TaskService {
         },
         users: {
           select: {
-            id: true,
+            username: true,
+            email: true
           },
         },
       },

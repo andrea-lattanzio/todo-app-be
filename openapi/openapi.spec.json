@@ -20,7 +20,14 @@
         },
         "responses": {
           "201": {
-            "description": ""
+            "description": "The task was succesfully created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Task"
+                }
+              }
+            }
           }
         },
         "tags": [
@@ -29,6 +36,8 @@
       },
       "get": {
         "operationId": "TaskController_findAll",
+        "summary": "Get all Tasks with related tag, category and users",
+        "description": "This endpoint returns a list of all tasks with the name of the related tags, categories and users",
         "parameters": [],
         "responses": {
           "200": {
@@ -43,6 +52,8 @@
     "/api/task/{id}": {
       "get": {
         "operationId": "TaskController_findOne",
+        "summary": "Get one Task with related entities in detail",
+        "description": "This endpoint returns a single tag with all the related entities in detail",
         "parameters": [
           {
             "name": "id",
@@ -64,6 +75,8 @@
       },
       "patch": {
         "operationId": "TaskController_update",
+        "summary": "Update one task",
+        "description": "This endpoint updates all the task info and its relationships",
         "parameters": [
           {
             "name": "id",
@@ -76,6 +89,7 @@
         ],
         "requestBody": {
           "required": true,
+          "description": "Updated Task information",
           "content": {
             "application/json": {
               "schema": {
@@ -95,6 +109,8 @@
       },
       "delete": {
         "operationId": "TaskController_remove",
+        "summary": "Remove one task",
+        "description": "This endpoint removes a task",
         "parameters": [
           {
             "name": "id",
@@ -145,6 +161,10 @@
     },
     "schemas": {
       "CreateTaskDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "Task": {
         "type": "object",
         "properties": {}
       },
