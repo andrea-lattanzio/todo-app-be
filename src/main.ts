@@ -5,6 +5,8 @@ import helmet from 'helmet';
 import { ConfigService } from '@nestjs/config';
 import { DocumentBuilder, OpenAPIObject, SwaggerModule } from '@nestjs/swagger';
 import { writeFileSync } from 'fs';
+import { ProductionPrismaExceptionFilter } from './config/database/prod.exception-filter';
+import { PrismaExceptionFilter } from './config/database/dev.exception-filter';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -39,7 +41,16 @@ async function bootstrap() {
   app.use(helmet({ contentSecurityPolicy: false }));
   app.enableCors();
 
+  app.useGlobalFilters(new PrismaExceptionFilter());
+
   const configService: ConfigService = app.get<ConfigService>(ConfigService);
+  // const production = configService.getOrThrow('NODE_ENV');
+  // if (production === 'production') {
+  //   app.useGlobalFilters(new ProductionPrismaExceptionFilter());
+  // } else if (production === 'development') {
+  //   app.useGlobalFilters(new PrismaExceptionFilter());
+  // }
+
   const port: number = configService.getOrThrow<number>('PORT');
   await app.listen(port);
   console.log(`🚀 Application is running on: http://localhost:${port}/api`);
