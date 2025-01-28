@@ -134,9 +134,12 @@
     "/api/category": {
       "post": {
         "operationId": "CategoryController_create",
+        "summary": "Create new Category",
+        "description": "This endpoint creates a new category",
         "parameters": [],
         "requestBody": {
           "required": true,
+          "description": "Category name and description",
           "content": {
             "application/json": {
               "schema": {
@@ -147,12 +150,21 @@
         },
         "responses": {
           "201": {
-            "description": ""
+            "description": "The category was succesfully created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Category"
+                }
+              }
+            }
           }
         }
       },
       "get": {
         "operationId": "CategoryController_findAll",
+        "summary": "Get all Categories",
+        "description": "This endpoint returns a list of all categories",
         "parameters": [],
         "responses": {
           "200": {
@@ -164,6 +176,8 @@
     "/api/category/{id}": {
       "get": {
         "operationId": "CategoryController_findOne",
+        "summary": "Get one category",
+        "description": "This endpoint returns a single category",
         "parameters": [
           {
             "name": "id",
@@ -182,6 +196,8 @@
       },
       "patch": {
         "operationId": "CategoryController_update",
+        "summary": "Update one category",
+        "description": "This endpoint updates the category name and description",
         "parameters": [
           {
             "name": "id",
@@ -194,6 +210,7 @@
         ],
         "requestBody": {
           "required": true,
+          "description": "Updated Category information",
           "content": {
             "application/json": {
               "schema": {
@@ -210,6 +227,8 @@
       },
       "delete": {
         "operationId": "CategoryController_remove",
+        "summary": "Remove one category",
+        "description": "This endpoint removes a category (with onCascade: \"SET NULL\" for task)",
         "parameters": [
           {
             "name": "id",
@@ -269,6 +288,10 @@
         "properties": {}
       },
       "CreateCategoryDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "Category": {
         "type": "object",
         "properties": {}
       },

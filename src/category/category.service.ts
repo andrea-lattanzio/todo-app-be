@@ -1,26 +1,44 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateCategoryDto } from './dto/create-category.dto';
 import { UpdateCategoryDto } from './dto/update-category.dto';
+import { PrismaMySqlService } from 'src/config/database/mysql.service';
 
 @Injectable()
 export class CategoryService {
-  create(createCategoryDto: CreateCategoryDto) {
-    return 'This action adds a new category';
+  constructor(private readonly prisma: PrismaMySqlService) {}
+
+  async create(createCategoryDto: CreateCategoryDto) {
+    return await this.prisma.category.create({ data: createCategoryDto });
   }
 
-  findAll() {
-    return `This action returns all category`;
+  async findAll() {
+    return await this.prisma.category.findMany();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} category`;
+  async findOne(id: string) {
+    return await this.prisma.category.findUnique({ where: { id } });
   }
 
-  update(id: number, updateCategoryDto: UpdateCategoryDto) {
-    return `This action updates a #${id} category`;
+  async update(id: string, updateCategoryDto: UpdateCategoryDto) {
+    const updatedData = {};
+    const category = await this.prisma.category.findUniqueOrThrow({ where: { id } });
+    Object.entries(updateCategoryDto).forEach(([key, newValue]) => {
+      if (newValue != null && newValue != category[key]) {
+        updatedData[key] = newValue;
+      }
+    });
+
+    if (Object.keys(updatedData).length === 0) {
+      return category;
+    }
+
+    return await this.prisma.category.update({
+      where: { id },
+      data: updatedData,
+    });
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} category`;
+  async remove(id: string) {
+    return await this.prisma.category.delete({ where: { id } });
   }
 }
