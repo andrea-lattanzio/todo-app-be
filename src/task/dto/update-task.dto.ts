@@ -4,6 +4,7 @@ import {
   IsArray,
   IsDateString,
   IsEnum,
+  isNotEmpty,
   IsNotEmpty,
   IsOptional,
   IsString,
@@ -25,11 +26,13 @@ export class UpdateTaskRelationsDto {
   @IsOptional()
   @IsArray()
   @IsUUID('all', { each: true })
+  @IsNotEmpty()
   addCategories?: string[];
 
   @IsOptional()
   @IsArray()
   @IsUUID('all', { each: true })
+  @IsNotEmpty()
   removeCategories?: string[];
 }
 

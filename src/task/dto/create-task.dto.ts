@@ -6,6 +6,7 @@ import {
   IsDateString,
   IsUUID,
   IsArray,
+  ArrayMaxSize,
 } from 'class-validator';
 
 export enum Priority {
@@ -56,6 +57,7 @@ export class CreateTaskDto {
   @IsArray()
   @IsUUID('all', { each: true })
   @IsNotEmpty()
+  @ArrayMaxSize(3, { message: 'a Task cannot have more than three categories related to it'})
   categories: string[];
 
   @IsArray()
