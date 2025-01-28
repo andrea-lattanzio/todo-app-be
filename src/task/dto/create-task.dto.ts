@@ -49,10 +49,9 @@ export class CreateTaskDto {
   @IsDateString()
   updatedAt?: string;
 
-  @IsArray()
-  @IsUUID('all', { each: true })
+  @IsUUID()
   @IsOptional()
-  users?: string[];
+  userId: string;
 
   @IsArray()
   @IsUUID('all', { each: true })

@@ -31,16 +31,6 @@ export class UpdateTaskRelationsDto {
   @IsArray()
   @IsUUID('all', { each: true })
   removeCategories?: string[];
-
-  @IsOptional()
-  @IsArray()
-  @IsUUID('all', { each: true })
-  addUsers?: string[];
-
-  @IsOptional()
-  @IsArray()
-  @IsUUID('all', { each: true })
-  removeUsers?: string[];
 }
 
 export class UpdateTaskDto {

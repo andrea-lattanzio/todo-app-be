@@ -7,17 +7,15 @@ export class TaskService {
   constructor(private readonly prisma: PrismaMySqlService) {}
 
   async create(createTaskDto: CreateTaskDto) {
-    const { categories, tags, users, ...taskData } = createTaskDto;
+    const { categories, tags, userId, ...taskData } = createTaskDto;
     const task = {
       ...taskData,
+      userId: userId,
       tags: {
         connect: tags?.map((id: string) => ({ id })) || [],
       },
       categories: {
         connect: categories?.map((id: string) => ({ id })) || [],
-      },
-      users: {
-        connect: users?.map((id: string) => ({ id })) || [],
       },
     };
     return await this.prisma.task.create({ data: task });
@@ -37,7 +35,7 @@ export class TaskService {
             color: true,
           },
         },
-        users: {
+        user: {
           select: {
             username: true,
             email: true
@@ -51,7 +49,7 @@ export class TaskService {
     const task = await this.prisma.task.findUnique({
       where: { id },
       include: {
-        users: true,
+        user: true,
         tags: true,
         categories: true,
       },
@@ -84,11 +82,7 @@ export class TaskService {
       categories: {
         connect: this.buildRelationOps(updateRelations.addCategories),
         disconnect: this.buildRelationOps(updateRelations.removeCategories),
-      },
-      users: {
-        connect: this.buildRelationOps(updateRelations.addUsers),
-        disconnect: this.buildRelationOps(updateRelations.removeUsers),
-      },
+      }
     };
   
   }
