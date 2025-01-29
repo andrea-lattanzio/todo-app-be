@@ -36,7 +36,7 @@ export class TagController {
 
   @Get()
   @ApiOperation({
-    summary: 'Get all tags',
+    summary: 'Get all Tags',
     description: 'This endpoint returns a list of all tags',
   })
   findAll() {
@@ -54,7 +54,7 @@ export class TagController {
 
   @Patch(':id')
   @ApiOperation({
-    summary: 'Update one tag',
+    summary: 'Update one Tag',
     description: 'This endpoint updates the tag name and color',
   })
   @ApiBody({
@@ -70,7 +70,7 @@ export class TagController {
 
   @Delete(':id')
   @ApiOperation({
-    summary: 'Remove one tag',
+    summary: 'Remove one Tag',
     description:
       'This endpoint removes a tag (with onCascade: "SET NULL" for task)',
   })

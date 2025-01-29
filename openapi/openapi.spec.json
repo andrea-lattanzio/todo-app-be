@@ -36,7 +36,7 @@
       },
       "get": {
         "operationId": "TaskController_findAll",
-        "summary": "Get all Tasks with related tag, category and users",
+        "summary": "Get all Tasks",
         "description": "This endpoint returns a list of all tasks with the name of the related tags, categories and users",
         "parameters": [],
         "responses": {
@@ -75,7 +75,7 @@
       },
       "patch": {
         "operationId": "TaskController_update",
-        "summary": "Update one task",
+        "summary": "Update one Task",
         "description": "This endpoint updates all the task info and its relationships",
         "parameters": [
           {
@@ -109,7 +109,7 @@
       },
       "delete": {
         "operationId": "TaskController_remove",
-        "summary": "Remove one task",
+        "summary": "Remove one Task",
         "description": "This endpoint removes a task",
         "parameters": [
           {
@@ -176,7 +176,7 @@
     "/api/category/{id}": {
       "get": {
         "operationId": "CategoryController_findOne",
-        "summary": "Get one category",
+        "summary": "Get one Category",
         "description": "This endpoint returns a single category",
         "parameters": [
           {
@@ -196,7 +196,7 @@
       },
       "patch": {
         "operationId": "CategoryController_update",
-        "summary": "Update one category",
+        "summary": "Update one Category",
         "description": "This endpoint updates the category name and description",
         "parameters": [
           {
@@ -278,7 +278,7 @@
       },
       "get": {
         "operationId": "TagController_findAll",
-        "summary": "Get all tags",
+        "summary": "Get all Tags",
         "description": "This endpoint returns a list of all tags",
         "parameters": [],
         "responses": {
@@ -311,7 +311,7 @@
       },
       "patch": {
         "operationId": "TagController_update",
-        "summary": "Update one tag",
+        "summary": "Update one Tag",
         "description": "This endpoint updates the tag name and color",
         "parameters": [
           {
@@ -342,7 +342,7 @@
       },
       "delete": {
         "operationId": "TagController_remove",
-        "summary": "Remove one tag",
+        "summary": "Remove one Tag",
         "description": "This endpoint removes a tag (with onCascade: \"SET NULL\" for task)",
         "parameters": [
           {
@@ -364,7 +364,7 @@
     "/api/auth/login": {
       "post": {
         "operationId": "AuthController_login",
-        "summary": "Logs in a user by sending back an authentication token",
+        "summary": "Login",
         "description": "This endpoint receives an email and a password and after validating them, returns a jwt token with the encrypted user infos",
         "parameters": [],
         "requestBody": {
@@ -395,7 +395,7 @@
     "/api/auth/register": {
       "post": {
         "operationId": "AuthController_register",
-        "summary": "Creates a new user",
+        "summary": "Register",
         "description": "This endpoint receives an email and a password and creates a new user if email is not already present",
         "parameters": [],
         "requestBody": {

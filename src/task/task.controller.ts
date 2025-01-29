@@ -43,7 +43,7 @@ export class TaskController {
 
   @Get()
   @ApiOperation({
-    summary: 'Get all Tasks with related tag, category and users',
+    summary: 'Get all Tasks',
     description:
       'This endpoint returns a list of all tasks with the name of the related tags, categories and users',
   })
@@ -63,7 +63,7 @@ export class TaskController {
 
   @Patch(':id')
   @ApiOperation({
-    summary: 'Update one task',
+    summary: 'Update one Task',
     description:
       'This endpoint updates all the task info and its relationships',
   })
@@ -77,7 +77,7 @@ export class TaskController {
 
   @Delete(':id')
   @ApiOperation({
-    summary: 'Remove one task',
+    summary: 'Remove one Task',
     description:
       'This endpoint removes a task',
   })

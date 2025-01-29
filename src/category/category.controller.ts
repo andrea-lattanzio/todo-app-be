@@ -45,7 +45,7 @@ export class CategoryController {
 
   @Get(':id')
   @ApiOperation({
-    summary: 'Get one category',
+    summary: 'Get one Category',
     description: 'This endpoint returns a single category',
   })
   findOne(@Param('id', UuidValidationPipe) id: string) {
@@ -54,7 +54,7 @@ export class CategoryController {
 
   @Patch(':id')
   @ApiOperation({
-    summary: 'Update one category',
+    summary: 'Update one Category',
     description: 'This endpoint updates the category name and description',
   })
   @ApiBody({

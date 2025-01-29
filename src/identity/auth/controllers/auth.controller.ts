@@ -17,7 +17,7 @@ export class AuthController {
   @UseGuards(LocalAuthGuard)
   @Post('login')
   @ApiOperation({
-    summary: 'Logs in a user by sending back an authentication token',
+    summary: 'Login',
     description:
       'This endpoint receives an email and a password and after validating them, returns a jwt token with the encrypted user infos',
   })
@@ -35,7 +35,7 @@ export class AuthController {
 
   @Post('register')
   @ApiOperation({
-    summary: 'Creates a new user',
+    summary: 'Register',
     description:
       'This endpoint receives an email and a password and creates a new user if email is not already present',
   })
