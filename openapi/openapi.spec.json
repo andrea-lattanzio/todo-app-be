@@ -361,6 +361,68 @@
         }
       }
     },
+    "/api/auth/login": {
+      "post": {
+        "operationId": "AuthController_login",
+        "summary": "Logs in a user by sending back an authentication token",
+        "description": "This endpoint receives an email and a password and after validating them, returns a jwt token with the encrypted user infos",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "description": "User email and password",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginRequestDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "User succesfully logged in",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoginResponseDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/auth/register": {
+      "post": {
+        "operationId": "AuthController_register",
+        "summary": "Creates a new user",
+        "description": "This endpoint receives an email and a password and creates a new user if email is not already present",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "description": "User email and password",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "User succesfully created and logged in",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoginResponseDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api": {
       "get": {
         "operationId": "AppController_getHello",
@@ -423,6 +485,18 @@
         "properties": {}
       },
       "UpdateTagDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "LoginRequestDTO": {
+        "type": "object",
+        "properties": {}
+      },
+      "LoginResponseDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "RegisterRequestDto": {
         "type": "object",
         "properties": {}
       }

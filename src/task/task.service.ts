@@ -37,7 +37,6 @@ export class TaskService {
         },
         user: {
           select: {
-            username: true,
             email: true
           },
         },
