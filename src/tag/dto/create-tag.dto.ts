@@ -9,7 +9,10 @@ export class CreateTagDto {
   @Matches(/^\S+$/, { message: 'Name must be a single word with no spaces.' })
   name: string;
   @IsString()
-  @IsHexColor({ message: 'Color must be a valid hex color code.' })
+  @Matches(/^#[0-9A-Fa-f]{6}$/, {
+    message:
+      'Color must be a valid hex color code with a # prefix (e.g., #FF5733).',
+  })
   color: string;
 }
 
