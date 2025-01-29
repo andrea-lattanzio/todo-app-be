@@ -3,26 +3,27 @@ import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
 async function main() {
-  const categories = await prisma.category.createMany({
+  await prisma.category.createMany({
     data: [
       { name: 'Work', description: 'Tasks related to work' },
       { name: 'Personal', description: 'Personal tasks and errands' },
       { name: 'Hobbies', description: 'Hobby-related tasks' },
     ],
+    skipDuplicates: true,
   });
 
-  const tags = await prisma.tag.createMany({
+  await prisma.tag.createMany({
     data: [
       { name: 'Urgent', color: '#FF0000' },
       { name: 'Important', color: '#FFA500' },
       { name: 'Optional', color: '#008000' },
     ],
+    skipDuplicates: true,
   });
 
   const user1 = await prisma.user.create({
     data: {
       email: 'johndoe@example.com',
-      username: 'johndoe',
       password: 'password123',
       authProviders: 'email',
       tasks: {
@@ -61,7 +62,6 @@ async function main() {
   const user2 = await prisma.user.create({
     data: {
       email: 'janedoe@example.com',
-      username: 'janedoe',
       password: 'securepassword',
       authProviders: 'email',
       tasks: {
