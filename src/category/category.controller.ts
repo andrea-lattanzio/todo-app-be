@@ -8,10 +8,10 @@ import {
   Delete,
 } from '@nestjs/common';
 import { CategoryService } from './category.service';
-import { CreateCategoryDto } from './dto/create-category.dto';
+import { Category, CreateCategoryDto } from './dto/create-category.dto';
 import { UpdateCategoryDto } from './dto/update-category.dto';
 import { ApiOperation, ApiBody, ApiCreatedResponse } from '@nestjs/swagger';
-import { Category } from './entities/category.entity';
+import UuidValidationPipe from 'src/common/pipes/UUIDValidation.pipe';
 
 @Controller('category')
 export class CategoryController {
@@ -48,22 +48,21 @@ export class CategoryController {
     summary: 'Get one category',
     description: 'This endpoint returns a single category',
   })
-  findOne(@Param('id') id: string) {
+  findOne(@Param('id', UuidValidationPipe) id: string) {
     return this.categoryService.findOne(id);
   }
 
   @Patch(':id')
   @ApiOperation({
     summary: 'Update one category',
-    description:
-      'This endpoint updates the category name and description',
+    description: 'This endpoint updates the category name and description',
   })
   @ApiBody({
     description: 'Updated Category information',
     type: UpdateCategoryDto,
   })
   update(
-    @Param('id') id: string,
+    @Param('id', UuidValidationPipe) id: string,
     @Body() updateCategoryDto: UpdateCategoryDto,
   ) {
     return this.categoryService.update(id, updateCategoryDto);
@@ -75,7 +74,7 @@ export class CategoryController {
     description:
       'This endpoint removes a category (with onCascade: "SET NULL" for task)',
   })
-  remove(@Param('id') id: string) {
+  remove(@Param('id', UuidValidationPipe) id: string) {
     return this.categoryService.remove(id);
   }
 }

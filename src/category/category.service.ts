@@ -21,7 +21,9 @@ export class CategoryService {
 
   async update(id: string, updateCategoryDto: UpdateCategoryDto) {
     const updatedData = {};
-    const category = await this.prisma.category.findUniqueOrThrow({ where: { id } });
+    const category = await this.prisma.category.findUniqueOrThrow({
+      where: { id },
+    });
     Object.entries(updateCategoryDto).forEach(([key, newValue]) => {
       if (newValue != null && newValue != category[key]) {
         updatedData[key] = newValue;

@@ -16,7 +16,7 @@ import {
   ApiOperation,
   ApiTags
 } from '@nestjs/swagger';
-import { UuidValidationPipe } from 'src/common/pipes/UUIDValidation.pipe';
+import UuidValidationPipe from 'src/common/pipes/UUIDValidation.pipe';
 
 @ApiTags('auth')
 @Controller('task')
