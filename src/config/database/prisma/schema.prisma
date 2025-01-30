@@ -15,7 +15,9 @@ model User {
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
 
-  tasks Task[]
+  tasks      Task[]
+  tags       Tag[]
+  categories Category[]
 }
 
 model Task {
@@ -40,16 +42,26 @@ model Tag {
   color     String
   createdAt DateTime @default(now())
 
+  userId String
+  user   User   @relation(fields: [userId], references: [id])
+
   tasks Task[]
+
+  @@unique([name, userId])
 }
 
 model Category {
   id          String   @id @default(uuid())
-  name        String   @unique
+  name        String
   description String?
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
-  tasks       Task[]
+  userId      String
+  user        User     @relation(fields: [userId], references: [id])
+
+  tasks Task[]
+
+  @@unique([name, userId])
 }
 
 enum Priority {
