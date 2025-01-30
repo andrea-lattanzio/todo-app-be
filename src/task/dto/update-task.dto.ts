@@ -63,5 +63,5 @@ export class UpdateTaskDto {
   @IsOptional()
   @ValidateNested()
   @Type(() => UpdateTaskRelationsDto)
-  updateRelations: UpdateTaskRelationsDto;
+  updateRelations?: UpdateTaskRelationsDto;
 }

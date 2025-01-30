@@ -1,4 +1,4 @@
-import { IsHexColor, IsString, Matches, MaxLength } from 'class-validator';
+import {IsString, Matches, MaxLength } from 'class-validator';
 
 export class CreateTagDto {
   @IsString()

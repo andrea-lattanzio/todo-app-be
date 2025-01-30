@@ -50,20 +50,20 @@ export class CreateTaskDto {
   @IsDateString()
   updatedAt?: string;
 
-  @IsUUID()
   @IsOptional()
-  userId: string;
-
   @IsArray()
   @IsUUID('all', { each: true })
   @IsNotEmpty()
-  @ArrayMaxSize(3, { message: 'a Task cannot have more than three categories related to it'})
-  categories: string[];
+  @ArrayMaxSize(3, {
+    message: 'a Task cannot have more than three categories related to it',
+  })
+  categories?: string[];
 
+  @IsOptional()
   @IsArray()
   @IsUUID('all', { each: true })
   @IsNotEmpty()
-  tags: string[];
+  tags?: string[];
 }
 
 export class Task {
