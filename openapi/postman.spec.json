@@ -1,1483 +1,1363 @@
 {
-    "item": [
-        {
-            "name": "api",
-            "description": "",
-            "item": [
-                {
-                    "name": "task",
-                    "description": "",
-                    "item": [
-                        {
-                            "id": "5bdf9485-a16e-427e-be7b-d61bd23ba51c",
-                            "name": "Create new Task",
-                            "request": {
-                                "name": "Create new Task",
-                                "description": {
-                                    "content": "This endpoint creates a new task and links it to existing categories and tags",
-                                    "type": "text/plain"
-                                },
-                                "url": {
-                                    "path": [
-                                        "api",
-                                        "task"
-                                    ],
-                                    "host": [
-                                        "{{baseUrl}}"
-                                    ],
-                                    "query": [],
-                                    "variable": []
-                                },
-                                "header": [
-                                    {
-                                        "key": "Content-Type",
-                                        "value": "application/json"
-                                    },
-                                    {
-                                        "key": "Accept",
-                                        "value": "application/json"
-                                    }
-                                ],
-                                "method": "POST",
-                                "body": {
-                                    "mode": "raw",
-                                    "raw": "{}",
-                                    "options": {
-                                        "raw": {
-                                            "headerFamily": "json",
-                                            "language": "json"
-                                        }
-                                    }
-                                },
-                                "auth": null
-                            },
-                            "response": [
-                                {
-                                    "id": "74d8aa4d-ad41-4b90-a91c-287d7b6d73da",
-                                    "name": "The task was succesfully created",
-                                    "originalRequest": {
-                                        "url": {
-                                            "path": [
-                                                "api",
-                                                "task"
-                                            ],
-                                            "host": [
-                                                "{{baseUrl}}"
-                                            ],
-                                            "query": [],
-                                            "variable": []
-                                        },
-                                        "header": [
-                                            {
-                                                "key": "Content-Type",
-                                                "value": "application/json"
-                                            },
-                                            {
-                                                "key": "Accept",
-                                                "value": "application/json"
-                                            }
-                                        ],
-                                        "method": "POST",
-                                        "body": {
-                                            "mode": "raw",
-                                            "raw": "{}",
-                                            "options": {
-                                                "raw": {
-                                                    "headerFamily": "json",
-                                                    "language": "json"
-                                                }
-                                            }
-                                        }
-                                    },
-                                    "status": "Created",
-                                    "code": 201,
-                                    "header": [
-                                        {
-                                            "key": "Content-Type",
-                                            "value": "application/json"
-                                        }
-                                    ],
-                                    "body": "{}",
-                                    "cookie": [],
-                                    "_postman_previewlanguage": "json"
-                                }
-                            ],
-                            "event": [],
-                            "protocolProfileBehavior": {
-                                "disableBodyPruning": true
-                            }
-                        },
-                        {
-                            "id": "01d6009b-affe-4bba-8a6d-359240e68eb2",
-                            "name": "Get all Tasks",
-                            "request": {
-                                "name": "Get all Tasks",
-                                "description": {
-                                    "content": "This endpoint returns a list of all tasks with the name of the related tags, categories and users",
-                                    "type": "text/plain"
-                                },
-                                "url": {
-                                    "path": [
-                                        "api",
-                                        "task"
-                                    ],
-                                    "host": [
-                                        "{{baseUrl}}"
-                                    ],
-                                    "query": [],
-                                    "variable": []
-                                },
-                                "method": "GET",
-                                "body": {},
-                                "auth": null
-                            },
-                            "response": [
-                                {
-                                    "id": "3a9e9164-e404-413d-955b-c0f0651ef151",
-                                    "originalRequest": {
-                                        "url": {
-                                            "path": [
-                                                "api",
-                                                "task"
-                                            ],
-                                            "host": [
-                                                "{{baseUrl}}"
-                                            ],
-                                            "query": [],
-                                            "variable": []
-                                        },
-                                        "method": "GET",
-                                        "body": {}
-                                    },
-                                    "status": "OK",
-                                    "code": 200,
-                                    "header": [],
-                                    "cookie": [],
-                                    "_postman_previewlanguage": "text"
-                                }
-                            ],
-                            "event": [],
-                            "protocolProfileBehavior": {
-                                "disableBodyPruning": true
-                            }
-                        },
-                        {
-                            "name": "{id}",
-                            "description": "",
-                            "item": [
-                                {
-                                    "id": "ca2e2646-9e9a-4a0a-9075-6525922b256d",
-                                    "name": "Get one Task with related entities in detail",
-                                    "request": {
-                                        "name": "Get one Task with related entities in detail",
-                                        "description": {
-                                            "content": "This endpoint returns a single tag with all the related entities in detail",
-                                            "type": "text/plain"
-                                        },
-                                        "url": {
-                                            "path": [
-                                                "api",
-                                                "task",
-                                                ":id"
-                                            ],
-                                            "host": [
-                                                "{{baseUrl}}"
-                                            ],
-                                            "query": [],
-                                            "variable": [
-                                                {
-                                                    "type": "any",
-                                                    "value": "<string>",
-                                                    "key": "id",
-                                                    "disabled": false,
-                                                    "description": {
-                                                        "content": "(Required) ",
-                                                        "type": "text/plain"
-                                                    }
-                                                }
-                                            ]
-                                        },
-                                        "method": "GET",
-                                        "body": {},
-                                        "auth": null
-                                    },
-                                    "response": [
-                                        {
-                                            "id": "b897a19c-ea60-410d-a458-7216cd919369",
-                                            "originalRequest": {
-                                                "url": {
-                                                    "path": [
-                                                        "api",
-                                                        "task",
-                                                        ":id"
-                                                    ],
-                                                    "host": [
-                                                        "{{baseUrl}}"
-                                                    ],
-                                                    "query": [],
-                                                    "variable": []
-                                                },
-                                                "method": "GET",
-                                                "body": {}
-                                            },
-                                            "status": "OK",
-                                            "code": 200,
-                                            "header": [],
-                                            "cookie": [],
-                                            "_postman_previewlanguage": "text"
-                                        }
-                                    ],
-                                    "event": [],
-                                    "protocolProfileBehavior": {
-                                        "disableBodyPruning": true
-                                    }
-                                },
-                                {
-                                    "id": "9d5d1ff0-a939-47d1-b118-9deb50a4b3e7",
-                                    "name": "Update one Task",
-                                    "request": {
-                                        "name": "Update one Task",
-                                        "description": {
-                                            "content": "This endpoint updates all the task info and its relationships",
-                                            "type": "text/plain"
-                                        },
-                                        "url": {
-                                            "path": [
-                                                "api",
-                                                "task",
-                                                ":id"
-                                            ],
-                                            "host": [
-                                                "{{baseUrl}}"
-                                            ],
-                                            "query": [],
-                                            "variable": [
-                                                {
-                                                    "type": "any",
-                                                    "value": "<string>",
-                                                    "key": "id",
-                                                    "disabled": false,
-                                                    "description": {
-                                                        "content": "(Required) ",
-                                                        "type": "text/plain"
-                                                    }
-                                                }
-                                            ]
-                                        },
-                                        "header": [
-                                            {
-                                                "key": "Content-Type",
-                                                "value": "application/json"
-                                            }
-                                        ],
-                                        "method": "PATCH",
-                                        "body": {
-                                            "mode": "raw",
-                                            "raw": "{}",
-                                            "options": {
-                                                "raw": {
-                                                    "headerFamily": "json",
-                                                    "language": "json"
-                                                }
-                                            }
-                                        },
-                                        "auth": null
-                                    },
-                                    "response": [
-                                        {
-                                            "id": "c04b366e-0f62-4e63-94aa-13559329ce3a",
-                                            "originalRequest": {
-                                                "url": {
-                                                    "path": [
-                                                        "api",
-                                                        "task",
-                                                        ":id"
-                                                    ],
-                                                    "host": [
-                                                        "{{baseUrl}}"
-                                                    ],
-                                                    "query": [],
-                                                    "variable": []
-                                                },
-                                                "header": [
-                                                    {
-                                                        "key": "Content-Type",
-                                                        "value": "application/json"
-                                                    }
-                                                ],
-                                                "method": "PATCH",
-                                                "body": {
-                                                    "mode": "raw",
-                                                    "raw": "{}",
-                                                    "options": {
-                                                        "raw": {
-                                                            "headerFamily": "json",
-                                                            "language": "json"
-                                                        }
-                                                    }
-                                                }
-                                            },
-                                            "status": "OK",
-                                            "code": 200,
-                                            "header": [],
-                                            "cookie": [],
-                                            "_postman_previewlanguage": "text"
-                                        }
-                                    ],
-                                    "event": [],
-                                    "protocolProfileBehavior": {
-                                        "disableBodyPruning": true
-                                    }
-                                },
-                                {
-                                    "id": "9062e793-d7d1-4a48-a367-00bea3786346",
-                                    "name": "Remove one Task",
-                                    "request": {
-                                        "name": "Remove one Task",
-                                        "description": {
-                                            "content": "This endpoint removes a task",
-                                            "type": "text/plain"
-                                        },
-                                        "url": {
-                                            "path": [
-                                                "api",
-                                                "task",
-                                                ":id"
-                                            ],
-                                            "host": [
-                                                "{{baseUrl}}"
-                                            ],
-                                            "query": [],
-                                            "variable": [
-                                                {
-                                                    "type": "any",
-                                                    "value": "<string>",
-                                                    "key": "id",
-                                                    "disabled": false,
-                                                    "description": {
-                                                        "content": "(Required) ",
-                                                        "type": "text/plain"
-                                                    }
-                                                }
-                                            ]
-                                        },
-                                        "method": "DELETE",
-                                        "body": {},
-                                        "auth": null
-                                    },
-                                    "response": [
-                                        {
-                                            "id": "f07d061b-96e9-404a-bb40-3d27fb8cfbe2",
-                                            "originalRequest": {
-                                                "url": {
-                                                    "path": [
-                                                        "api",
-                                                        "task",
-                                                        ":id"
-                                                    ],
-                                                    "host": [
-                                                        "{{baseUrl}}"
-                                                    ],
-                                                    "query": [],
-                                                    "variable": []
-                                                },
-                                                "method": "DELETE",
-                                                "body": {}
-                                            },
-                                            "status": "OK",
-                                            "code": 200,
-                                            "header": [],
-                                            "cookie": [],
-                                            "_postman_previewlanguage": "text"
-                                        }
-                                    ],
-                                    "event": [],
-                                    "protocolProfileBehavior": {
-                                        "disableBodyPruning": true
-                                    }
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    "name": "category",
-                    "description": "",
-                    "item": [
-                        {
-                            "id": "aee9b766-1581-4cad-bda0-76a085ff5e50",
-                            "name": "Create new Category",
-                            "request": {
-                                "name": "Create new Category",
-                                "description": {
-                                    "content": "This endpoint creates a new category",
-                                    "type": "text/plain"
-                                },
-                                "url": {
-                                    "path": [
-                                        "api",
-                                        "category"
-                                    ],
-                                    "host": [
-                                        "{{baseUrl}}"
-                                    ],
-                                    "query": [],
-                                    "variable": []
-                                },
-                                "header": [
-                                    {
-                                        "key": "Content-Type",
-                                        "value": "application/json"
-                                    },
-                                    {
-                                        "key": "Accept",
-                                        "value": "application/json"
-                                    }
-                                ],
-                                "method": "POST",
-                                "body": {
-                                    "mode": "raw",
-                                    "raw": "{}",
-                                    "options": {
-                                        "raw": {
-                                            "headerFamily": "json",
-                                            "language": "json"
-                                        }
-                                    }
-                                },
-                                "auth": null
-                            },
-                            "response": [
-                                {
-                                    "id": "006f8eaa-4eb6-4658-a034-8c415c284ac0",
-                                    "name": "The category was succesfully created",
-                                    "originalRequest": {
-                                        "url": {
-                                            "path": [
-                                                "api",
-                                                "category"
-                                            ],
-                                            "host": [
-                                                "{{baseUrl}}"
-                                            ],
-                                            "query": [],
-                                            "variable": []
-                                        },
-                                        "header": [
-                                            {
-                                                "key": "Content-Type",
-                                                "value": "application/json"
-                                            },
-                                            {
-                                                "key": "Accept",
-                                                "value": "application/json"
-                                            }
-                                        ],
-                                        "method": "POST",
-                                        "body": {
-                                            "mode": "raw",
-                                            "raw": "{}",
-                                            "options": {
-                                                "raw": {
-                                                    "headerFamily": "json",
-                                                    "language": "json"
-                                                }
-                                            }
-                                        }
-                                    },
-                                    "status": "Created",
-                                    "code": 201,
-                                    "header": [
-                                        {
-                                            "key": "Content-Type",
-                                            "value": "application/json"
-                                        }
-                                    ],
-                                    "body": "{}",
-                                    "cookie": [],
-                                    "_postman_previewlanguage": "json"
-                                }
-                            ],
-                            "event": [],
-                            "protocolProfileBehavior": {
-                                "disableBodyPruning": true
-                            }
-                        },
-                        {
-                            "id": "7318632a-4be4-4ef2-af36-d31bfabe60d5",
-                            "name": "Get all Categories",
-                            "request": {
-                                "name": "Get all Categories",
-                                "description": {
-                                    "content": "This endpoint returns a list of all categories",
-                                    "type": "text/plain"
-                                },
-                                "url": {
-                                    "path": [
-                                        "api",
-                                        "category"
-                                    ],
-                                    "host": [
-                                        "{{baseUrl}}"
-                                    ],
-                                    "query": [],
-                                    "variable": []
-                                },
-                                "method": "GET",
-                                "body": {},
-                                "auth": null
-                            },
-                            "response": [
-                                {
-                                    "id": "da1a1f31-069a-4b43-a90e-292f6ee80554",
-                                    "originalRequest": {
-                                        "url": {
-                                            "path": [
-                                                "api",
-                                                "category"
-                                            ],
-                                            "host": [
-                                                "{{baseUrl}}"
-                                            ],
-                                            "query": [],
-                                            "variable": []
-                                        },
-                                        "method": "GET",
-                                        "body": {}
-                                    },
-                                    "status": "OK",
-                                    "code": 200,
-                                    "header": [],
-                                    "cookie": [],
-                                    "_postman_previewlanguage": "text"
-                                }
-                            ],
-                            "event": [],
-                            "protocolProfileBehavior": {
-                                "disableBodyPruning": true
-                            }
-                        },
-                        {
-                            "name": "{id}",
-                            "description": "",
-                            "item": [
-                                {
-                                    "id": "648227e4-1b3b-4281-9ca2-568439180aca",
-                                    "name": "Get one Category",
-                                    "request": {
-                                        "name": "Get one Category",
-                                        "description": {
-                                            "content": "This endpoint returns a single category",
-                                            "type": "text/plain"
-                                        },
-                                        "url": {
-                                            "path": [
-                                                "api",
-                                                "category",
-                                                ":id"
-                                            ],
-                                            "host": [
-                                                "{{baseUrl}}"
-                                            ],
-                                            "query": [],
-                                            "variable": [
-                                                {
-                                                    "type": "any",
-                                                    "value": "<string>",
-                                                    "key": "id",
-                                                    "disabled": false,
-                                                    "description": {
-                                                        "content": "(Required) ",
-                                                        "type": "text/plain"
-                                                    }
-                                                }
-                                            ]
-                                        },
-                                        "method": "GET",
-                                        "body": {},
-                                        "auth": null
-                                    },
-                                    "response": [
-                                        {
-                                            "id": "a1d744a8-cbed-4127-bfbc-ecf10147f55e",
-                                            "originalRequest": {
-                                                "url": {
-                                                    "path": [
-                                                        "api",
-                                                        "category",
-                                                        ":id"
-                                                    ],
-                                                    "host": [
-                                                        "{{baseUrl}}"
-                                                    ],
-                                                    "query": [],
-                                                    "variable": []
-                                                },
-                                                "method": "GET",
-                                                "body": {}
-                                            },
-                                            "status": "OK",
-                                            "code": 200,
-                                            "header": [],
-                                            "cookie": [],
-                                            "_postman_previewlanguage": "text"
-                                        }
-                                    ],
-                                    "event": [],
-                                    "protocolProfileBehavior": {
-                                        "disableBodyPruning": true
-                                    }
-                                },
-                                {
-                                    "id": "8e747de6-fff0-47a4-89d0-c9f57930ac32",
-                                    "name": "Update one Category",
-                                    "request": {
-                                        "name": "Update one Category",
-                                        "description": {
-                                            "content": "This endpoint updates the category name and description",
-                                            "type": "text/plain"
-                                        },
-                                        "url": {
-                                            "path": [
-                                                "api",
-                                                "category",
-                                                ":id"
-                                            ],
-                                            "host": [
-                                                "{{baseUrl}}"
-                                            ],
-                                            "query": [],
-                                            "variable": [
-                                                {
-                                                    "type": "any",
-                                                    "value": "<string>",
-                                                    "key": "id",
-                                                    "disabled": false,
-                                                    "description": {
-                                                        "content": "(Required) ",
-                                                        "type": "text/plain"
-                                                    }
-                                                }
-                                            ]
-                                        },
-                                        "header": [
-                                            {
-                                                "key": "Content-Type",
-                                                "value": "application/json"
-                                            }
-                                        ],
-                                        "method": "PATCH",
-                                        "body": {
-                                            "mode": "raw",
-                                            "raw": "{}",
-                                            "options": {
-                                                "raw": {
-                                                    "headerFamily": "json",
-                                                    "language": "json"
-                                                }
-                                            }
-                                        },
-                                        "auth": null
-                                    },
-                                    "response": [
-                                        {
-                                            "id": "a5f5104e-2081-4572-9f50-f8b66044efa1",
-                                            "originalRequest": {
-                                                "url": {
-                                                    "path": [
-                                                        "api",
-                                                        "category",
-                                                        ":id"
-                                                    ],
-                                                    "host": [
-                                                        "{{baseUrl}}"
-                                                    ],
-                                                    "query": [],
-                                                    "variable": []
-                                                },
-                                                "header": [
-                                                    {
-                                                        "key": "Content-Type",
-                                                        "value": "application/json"
-                                                    }
-                                                ],
-                                                "method": "PATCH",
-                                                "body": {
-                                                    "mode": "raw",
-                                                    "raw": "{}",
-                                                    "options": {
-                                                        "raw": {
-                                                            "headerFamily": "json",
-                                                            "language": "json"
-                                                        }
-                                                    }
-                                                }
-                                            },
-                                            "status": "OK",
-                                            "code": 200,
-                                            "header": [],
-                                            "cookie": [],
-                                            "_postman_previewlanguage": "text"
-                                        }
-                                    ],
-                                    "event": [],
-                                    "protocolProfileBehavior": {
-                                        "disableBodyPruning": true
-                                    }
-                                },
-                                {
-                                    "id": "9208a70c-49b5-4154-b5c2-bcb182c7620f",
-                                    "name": "Remove one category",
-                                    "request": {
-                                        "name": "Remove one category",
-                                        "description": {
-                                            "content": "This endpoint removes a category (with onCascade: \"SET NULL\" for task)",
-                                            "type": "text/plain"
-                                        },
-                                        "url": {
-                                            "path": [
-                                                "api",
-                                                "category",
-                                                ":id"
-                                            ],
-                                            "host": [
-                                                "{{baseUrl}}"
-                                            ],
-                                            "query": [],
-                                            "variable": [
-                                                {
-                                                    "type": "any",
-                                                    "value": "<string>",
-                                                    "key": "id",
-                                                    "disabled": false,
-                                                    "description": {
-                                                        "content": "(Required) ",
-                                                        "type": "text/plain"
-                                                    }
-                                                }
-                                            ]
-                                        },
-                                        "method": "DELETE",
-                                        "body": {},
-                                        "auth": null
-                                    },
-                                    "response": [
-                                        {
-                                            "id": "8dc0b1ab-04af-48dc-b373-749d87c62b75",
-                                            "originalRequest": {
-                                                "url": {
-                                                    "path": [
-                                                        "api",
-                                                        "category",
-                                                        ":id"
-                                                    ],
-                                                    "host": [
-                                                        "{{baseUrl}}"
-                                                    ],
-                                                    "query": [],
-                                                    "variable": []
-                                                },
-                                                "method": "DELETE",
-                                                "body": {}
-                                            },
-                                            "status": "OK",
-                                            "code": 200,
-                                            "header": [],
-                                            "cookie": [],
-                                            "_postman_previewlanguage": "text"
-                                        }
-                                    ],
-                                    "event": [],
-                                    "protocolProfileBehavior": {
-                                        "disableBodyPruning": true
-                                    }
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    "name": "tag",
-                    "description": "",
-                    "item": [
-                        {
-                            "id": "7eb9615e-2b33-4b20-bfcc-9e98dbc7c71a",
-                            "name": "Create new Tag",
-                            "request": {
-                                "name": "Create new Tag",
-                                "description": {
-                                    "content": "This endpoint creates a new tag",
-                                    "type": "text/plain"
-                                },
-                                "url": {
-                                    "path": [
-                                        "api",
-                                        "tag"
-                                    ],
-                                    "host": [
-                                        "{{baseUrl}}"
-                                    ],
-                                    "query": [],
-                                    "variable": []
-                                },
-                                "header": [
-                                    {
-                                        "key": "Content-Type",
-                                        "value": "application/json"
-                                    },
-                                    {
-                                        "key": "Accept",
-                                        "value": "application/json"
-                                    }
-                                ],
-                                "method": "POST",
-                                "body": {
-                                    "mode": "raw",
-                                    "raw": "{}",
-                                    "options": {
-                                        "raw": {
-                                            "headerFamily": "json",
-                                            "language": "json"
-                                        }
-                                    }
-                                },
-                                "auth": null
-                            },
-                            "response": [
-                                {
-                                    "id": "f6f2745f-422c-4aa6-b926-0435a88efb72",
-                                    "name": "The tag was succesfully created",
-                                    "originalRequest": {
-                                        "url": {
-                                            "path": [
-                                                "api",
-                                                "tag"
-                                            ],
-                                            "host": [
-                                                "{{baseUrl}}"
-                                            ],
-                                            "query": [],
-                                            "variable": []
-                                        },
-                                        "header": [
-                                            {
-                                                "key": "Content-Type",
-                                                "value": "application/json"
-                                            },
-                                            {
-                                                "key": "Accept",
-                                                "value": "application/json"
-                                            }
-                                        ],
-                                        "method": "POST",
-                                        "body": {
-                                            "mode": "raw",
-                                            "raw": "{}",
-                                            "options": {
-                                                "raw": {
-                                                    "headerFamily": "json",
-                                                    "language": "json"
-                                                }
-                                            }
-                                        }
-                                    },
-                                    "status": "Created",
-                                    "code": 201,
-                                    "header": [
-                                        {
-                                            "key": "Content-Type",
-                                            "value": "application/json"
-                                        }
-                                    ],
-                                    "body": "{}",
-                                    "cookie": [],
-                                    "_postman_previewlanguage": "json"
-                                }
-                            ],
-                            "event": [],
-                            "protocolProfileBehavior": {
-                                "disableBodyPruning": true
-                            }
-                        },
-                        {
-                            "id": "bb62b294-d504-4146-a38d-a956b1aacb0e",
-                            "name": "Get all Tags",
-                            "request": {
-                                "name": "Get all Tags",
-                                "description": {
-                                    "content": "This endpoint returns a list of all tags",
-                                    "type": "text/plain"
-                                },
-                                "url": {
-                                    "path": [
-                                        "api",
-                                        "tag"
-                                    ],
-                                    "host": [
-                                        "{{baseUrl}}"
-                                    ],
-                                    "query": [],
-                                    "variable": []
-                                },
-                                "method": "GET",
-                                "body": {},
-                                "auth": null
-                            },
-                            "response": [
-                                {
-                                    "id": "71915b78-fb94-45e8-b1ed-bdd5db455641",
-                                    "originalRequest": {
-                                        "url": {
-                                            "path": [
-                                                "api",
-                                                "tag"
-                                            ],
-                                            "host": [
-                                                "{{baseUrl}}"
-                                            ],
-                                            "query": [],
-                                            "variable": []
-                                        },
-                                        "method": "GET",
-                                        "body": {}
-                                    },
-                                    "status": "OK",
-                                    "code": 200,
-                                    "header": [],
-                                    "cookie": [],
-                                    "_postman_previewlanguage": "text"
-                                }
-                            ],
-                            "event": [],
-                            "protocolProfileBehavior": {
-                                "disableBodyPruning": true
-                            }
-                        },
-                        {
-                            "name": "{id}",
-                            "description": "",
-                            "item": [
-                                {
-                                    "id": "d12ae183-6c4e-4990-b35d-032bde5d9309",
-                                    "name": "Get one Tag",
-                                    "request": {
-                                        "name": "Get one Tag",
-                                        "description": {
-                                            "content": "This endpoint returns a single tag",
-                                            "type": "text/plain"
-                                        },
-                                        "url": {
-                                            "path": [
-                                                "api",
-                                                "tag",
-                                                ":id"
-                                            ],
-                                            "host": [
-                                                "{{baseUrl}}"
-                                            ],
-                                            "query": [],
-                                            "variable": [
-                                                {
-                                                    "type": "any",
-                                                    "value": "<string>",
-                                                    "key": "id",
-                                                    "disabled": false,
-                                                    "description": {
-                                                        "content": "(Required) ",
-                                                        "type": "text/plain"
-                                                    }
-                                                }
-                                            ]
-                                        },
-                                        "method": "GET",
-                                        "body": {},
-                                        "auth": null
-                                    },
-                                    "response": [
-                                        {
-                                            "id": "edf5eb4c-5a23-4175-9572-9372a1f106af",
-                                            "originalRequest": {
-                                                "url": {
-                                                    "path": [
-                                                        "api",
-                                                        "tag",
-                                                        ":id"
-                                                    ],
-                                                    "host": [
-                                                        "{{baseUrl}}"
-                                                    ],
-                                                    "query": [],
-                                                    "variable": []
-                                                },
-                                                "method": "GET",
-                                                "body": {}
-                                            },
-                                            "status": "OK",
-                                            "code": 200,
-                                            "header": [],
-                                            "cookie": [],
-                                            "_postman_previewlanguage": "text"
-                                        }
-                                    ],
-                                    "event": [],
-                                    "protocolProfileBehavior": {
-                                        "disableBodyPruning": true
-                                    }
-                                },
-                                {
-                                    "id": "4d922167-774c-489c-a0d8-ee3b8c4ba5de",
-                                    "name": "Update one Tag",
-                                    "request": {
-                                        "name": "Update one Tag",
-                                        "description": {
-                                            "content": "This endpoint updates the tag name and color",
-                                            "type": "text/plain"
-                                        },
-                                        "url": {
-                                            "path": [
-                                                "api",
-                                                "tag",
-                                                ":id"
-                                            ],
-                                            "host": [
-                                                "{{baseUrl}}"
-                                            ],
-                                            "query": [],
-                                            "variable": [
-                                                {
-                                                    "type": "any",
-                                                    "value": "<string>",
-                                                    "key": "id",
-                                                    "disabled": false,
-                                                    "description": {
-                                                        "content": "(Required) ",
-                                                        "type": "text/plain"
-                                                    }
-                                                }
-                                            ]
-                                        },
-                                        "header": [
-                                            {
-                                                "key": "Content-Type",
-                                                "value": "application/json"
-                                            }
-                                        ],
-                                        "method": "PATCH",
-                                        "body": {
-                                            "mode": "raw",
-                                            "raw": "{}",
-                                            "options": {
-                                                "raw": {
-                                                    "headerFamily": "json",
-                                                    "language": "json"
-                                                }
-                                            }
-                                        },
-                                        "auth": null
-                                    },
-                                    "response": [
-                                        {
-                                            "id": "b44bf1a2-8dd4-43ed-859d-eac3155013b9",
-                                            "originalRequest": {
-                                                "url": {
-                                                    "path": [
-                                                        "api",
-                                                        "tag",
-                                                        ":id"
-                                                    ],
-                                                    "host": [
-                                                        "{{baseUrl}}"
-                                                    ],
-                                                    "query": [],
-                                                    "variable": []
-                                                },
-                                                "header": [
-                                                    {
-                                                        "key": "Content-Type",
-                                                        "value": "application/json"
-                                                    }
-                                                ],
-                                                "method": "PATCH",
-                                                "body": {
-                                                    "mode": "raw",
-                                                    "raw": "{}",
-                                                    "options": {
-                                                        "raw": {
-                                                            "headerFamily": "json",
-                                                            "language": "json"
-                                                        }
-                                                    }
-                                                }
-                                            },
-                                            "status": "OK",
-                                            "code": 200,
-                                            "header": [],
-                                            "cookie": [],
-                                            "_postman_previewlanguage": "text"
-                                        }
-                                    ],
-                                    "event": [],
-                                    "protocolProfileBehavior": {
-                                        "disableBodyPruning": true
-                                    }
-                                },
-                                {
-                                    "id": "1ae901a5-535d-4fd2-bdcf-c74372df9dda",
-                                    "name": "Remove one Tag",
-                                    "request": {
-                                        "name": "Remove one Tag",
-                                        "description": {
-                                            "content": "This endpoint removes a tag (with onCascade: \"SET NULL\" for task)",
-                                            "type": "text/plain"
-                                        },
-                                        "url": {
-                                            "path": [
-                                                "api",
-                                                "tag",
-                                                ":id"
-                                            ],
-                                            "host": [
-                                                "{{baseUrl}}"
-                                            ],
-                                            "query": [],
-                                            "variable": [
-                                                {
-                                                    "type": "any",
-                                                    "value": "<string>",
-                                                    "key": "id",
-                                                    "disabled": false,
-                                                    "description": {
-                                                        "content": "(Required) ",
-                                                        "type": "text/plain"
-                                                    }
-                                                }
-                                            ]
-                                        },
-                                        "method": "DELETE",
-                                        "body": {},
-                                        "auth": null
-                                    },
-                                    "response": [
-                                        {
-                                            "id": "da14f46b-a3f3-4bb1-83c4-ca35f40f4a9d",
-                                            "originalRequest": {
-                                                "url": {
-                                                    "path": [
-                                                        "api",
-                                                        "tag",
-                                                        ":id"
-                                                    ],
-                                                    "host": [
-                                                        "{{baseUrl}}"
-                                                    ],
-                                                    "query": [],
-                                                    "variable": []
-                                                },
-                                                "method": "DELETE",
-                                                "body": {}
-                                            },
-                                            "status": "OK",
-                                            "code": 200,
-                                            "header": [],
-                                            "cookie": [],
-                                            "_postman_previewlanguage": "text"
-                                        }
-                                    ],
-                                    "event": [],
-                                    "protocolProfileBehavior": {
-                                        "disableBodyPruning": true
-                                    }
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    "name": "auth",
-                    "description": "",
-                    "item": [
-                        {
-                            "name": "login",
-                            "description": "",
-                            "item": [
-                                {
-                                    "id": "79f05adc-b0bb-4607-a2cd-df3c12b79652",
-                                    "name": "Login",
-                                    "request": {
-                                        "name": "Login",
-                                        "description": {
-                                            "content": "This endpoint receives an email and a password and after validating them, returns a jwt token with the encrypted user infos",
-                                            "type": "text/plain"
-                                        },
-                                        "url": {
-                                            "path": [
-                                                "api",
-                                                "auth",
-                                                "login"
-                                            ],
-                                            "host": [
-                                                "{{baseUrl}}"
-                                            ],
-                                            "query": [],
-                                            "variable": []
-                                        },
-                                        "header": [
-                                            {
-                                                "key": "Content-Type",
-                                                "value": "application/json"
-                                            },
-                                            {
-                                                "key": "Accept",
-                                                "value": "application/json"
-                                            }
-                                        ],
-                                        "method": "POST",
-                                        "body": {
-                                            "mode": "raw",
-                                            "raw": "{}",
-                                            "options": {
-                                                "raw": {
-                                                    "headerFamily": "json",
-                                                    "language": "json"
-                                                }
-                                            }
-                                        },
-                                        "auth": null
-                                    },
-                                    "response": [
-                                        {
-                                            "id": "28a83be1-7cf6-417c-814d-71efba34780a",
-                                            "name": "User succesfully logged in",
-                                            "originalRequest": {
-                                                "url": {
-                                                    "path": [
-                                                        "api",
-                                                        "auth",
-                                                        "login"
-                                                    ],
-                                                    "host": [
-                                                        "{{baseUrl}}"
-                                                    ],
-                                                    "query": [],
-                                                    "variable": []
-                                                },
-                                                "header": [
-                                                    {
-                                                        "key": "Content-Type",
-                                                        "value": "application/json"
-                                                    },
-                                                    {
-                                                        "key": "Accept",
-                                                        "value": "application/json"
-                                                    }
-                                                ],
-                                                "method": "POST",
-                                                "body": {
-                                                    "mode": "raw",
-                                                    "raw": "{}",
-                                                    "options": {
-                                                        "raw": {
-                                                            "headerFamily": "json",
-                                                            "language": "json"
-                                                        }
-                                                    }
-                                                }
-                                            },
-                                            "status": "OK",
-                                            "code": 200,
-                                            "header": [
-                                                {
-                                                    "key": "Content-Type",
-                                                    "value": "application/json"
-                                                }
-                                            ],
-                                            "body": "{}",
-                                            "cookie": [],
-                                            "_postman_previewlanguage": "json"
-                                        }
-                                    ],
-                                    "event": [],
-                                    "protocolProfileBehavior": {
-                                        "disableBodyPruning": true
-                                    }
-                                }
-                            ]
-                        },
-                        {
-                            "name": "register",
-                            "description": "",
-                            "item": [
-                                {
-                                    "id": "0a35f3a7-06a3-4a6a-84c1-192275ec914a",
-                                    "name": "Register",
-                                    "request": {
-                                        "name": "Register",
-                                        "description": {
-                                            "content": "This endpoint receives an email and a password and creates a new user if email is not already present",
-                                            "type": "text/plain"
-                                        },
-                                        "url": {
-                                            "path": [
-                                                "api",
-                                                "auth",
-                                                "register"
-                                            ],
-                                            "host": [
-                                                "{{baseUrl}}"
-                                            ],
-                                            "query": [],
-                                            "variable": []
-                                        },
-                                        "header": [
-                                            {
-                                                "key": "Content-Type",
-                                                "value": "application/json"
-                                            },
-                                            {
-                                                "key": "Accept",
-                                                "value": "application/json"
-                                            }
-                                        ],
-                                        "method": "POST",
-                                        "body": {
-                                            "mode": "raw",
-                                            "raw": "{}",
-                                            "options": {
-                                                "raw": {
-                                                    "headerFamily": "json",
-                                                    "language": "json"
-                                                }
-                                            }
-                                        },
-                                        "auth": null
-                                    },
-                                    "response": [
-                                        {
-                                            "id": "eb34d554-b3b0-437f-bbc8-7b3943286759",
-                                            "name": "User succesfully created and logged in",
-                                            "originalRequest": {
-                                                "url": {
-                                                    "path": [
-                                                        "api",
-                                                        "auth",
-                                                        "register"
-                                                    ],
-                                                    "host": [
-                                                        "{{baseUrl}}"
-                                                    ],
-                                                    "query": [],
-                                                    "variable": []
-                                                },
-                                                "header": [
-                                                    {
-                                                        "key": "Content-Type",
-                                                        "value": "application/json"
-                                                    },
-                                                    {
-                                                        "key": "Accept",
-                                                        "value": "application/json"
-                                                    }
-                                                ],
-                                                "method": "POST",
-                                                "body": {
-                                                    "mode": "raw",
-                                                    "raw": "{}",
-                                                    "options": {
-                                                        "raw": {
-                                                            "headerFamily": "json",
-                                                            "language": "json"
-                                                        }
-                                                    }
-                                                }
-                                            },
-                                            "status": "OK",
-                                            "code": 200,
-                                            "header": [
-                                                {
-                                                    "key": "Content-Type",
-                                                    "value": "application/json"
-                                                }
-                                            ],
-                                            "body": "{}",
-                                            "cookie": [],
-                                            "_postman_previewlanguage": "json"
-                                        }
-                                    ],
-                                    "event": [],
-                                    "protocolProfileBehavior": {
-                                        "disableBodyPruning": true
-                                    }
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    "id": "569acb16-617c-43c5-b9c1-c665e61a62a5",
-                    "name": "App Controller get Hello",
-                    "request": {
-                        "name": "App Controller get Hello",
-                        "description": {},
-                        "url": {
-                            "path": [
-                                "api"
-                            ],
-                            "host": [
-                                "{{baseUrl}}"
-                            ],
-                            "query": [],
-                            "variable": []
-                        },
-                        "method": "GET",
-                        "body": {},
-                        "auth": null
-                    },
-                    "response": [
-                        {
-                            "id": "f4f6923a-0730-4f0d-8394-9dbf1e69b65e",
-                            "originalRequest": {
-                                "url": {
-                                    "path": [
-                                        "api"
-                                    ],
-                                    "host": [
-                                        "{{baseUrl}}"
-                                    ],
-                                    "query": [],
-                                    "variable": []
-                                },
-                                "method": "GET",
-                                "body": {}
-                            },
-                            "status": "OK",
-                            "code": 200,
-                            "header": [],
-                            "cookie": [],
-                            "_postman_previewlanguage": "text"
-                        }
-                    ],
-                    "event": [],
-                    "protocolProfileBehavior": {
-                        "disableBodyPruning": true
-                    }
-                }
-            ]
-        }
-    ],
-    "event": [],
-    "variable": [
-        {
-            "key": "baseUrl",
-            "value": "/"
-        }
-    ],
-    "info": {
-        "_postman_id": "9c9a3cc0-74a7-44c2-af72-966286e2e776",
-        "name": "Todo API",
-        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-        "description": {
-            "content": "",
-            "type": "text/plain"
-        }
-    }
+	"info": {
+		"_postman_id": "8211d821-48ef-4fa2-8133-dc20058bbfd1",
+		"name": "Todo API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26352840"
+	},
+	"item": [
+		{
+			"name": "api",
+			"item": [
+				{
+					"name": "task",
+					"item": [
+						{
+							"name": "{id}",
+							"item": [
+								{
+									"name": "Get one Task with related entities in detail",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{authToken}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/task/ee7f6666-0185-4ec4-8de6-ace310953b56",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"task",
+												"ee7f6666-0185-4ec4-8de6-ace310953b56"
+											]
+										},
+										"description": "This endpoint returns a single tag with all the related entities in detail"
+									},
+									"response": [
+										{
+											"name": "Untitled Response",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "//api/task/:id",
+													"path": [
+														"",
+														"api",
+														"task",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								},
+								{
+									"name": "Update one Task",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{authToken}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"updateRelations\": {\n        \"addCategories\": [\"ef1d25fc-328b-47ea-b6d1-cae80524c0a8\"]\n    }\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/task/28eea544-cc16-41bf-8fb8-e84e9bb50d2f",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"task",
+												"28eea544-cc16-41bf-8fb8-e84e9bb50d2f"
+											]
+										},
+										"description": "This endpoint updates all the task info and its relationships"
+									},
+									"response": [
+										{
+											"name": "Untitled Response",
+											"originalRequest": {
+												"method": "PATCH",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "//api/task/:id",
+													"path": [
+														"",
+														"api",
+														"task",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								},
+								{
+									"name": "Remove one Task",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/task/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"task",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "<string>",
+													"description": "(Required) "
+												}
+											]
+										},
+										"description": "This endpoint removes a task"
+									},
+									"response": [
+										{
+											"name": "Untitled Response",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [],
+												"url": {
+													"raw": "//api/task/:id",
+													"path": [
+														"",
+														"api",
+														"task",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "Create new Task",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{authToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"Do the groceries\",\n  \"description\": \"Complete the annual financial report and submit it to management.\",\n  \"dueDate\": \"2025-03-15T12:00:00.000Z\",\n  \"priority\": \"LOW\",\n  \"status\": \"PENDING\",\n  \"categories\": [\"da6b4881-aad8-4f35-9d06-39449caa5fca\"]\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/task",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"task"
+									]
+								},
+								"description": "This endpoint creates a new task and links it to existing categories and tags"
+							},
+							"response": [
+								{
+									"name": "The task was succesfully created",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "//api/task",
+											"path": [
+												"",
+												"api",
+												"task"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{}"
+								}
+							]
+						},
+						{
+							"name": "Get all Tasks",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{authToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/task",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"task"
+									]
+								},
+								"description": "This endpoint returns a list of all tasks with the name of the related tags, categories and users"
+							},
+							"response": [
+								{
+									"name": "Untitled Response",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "//api/task",
+											"path": [
+												"",
+												"api",
+												"task"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "category",
+					"item": [
+						{
+							"name": "{id}",
+							"item": [
+								{
+									"name": "Get one Category",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/category/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"category",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "<string>",
+													"description": "(Required) "
+												}
+											]
+										},
+										"description": "This endpoint returns a single category"
+									},
+									"response": [
+										{
+											"name": "Untitled Response",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "//api/category/:id",
+													"path": [
+														"",
+														"api",
+														"category",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								},
+								{
+									"name": "Update one Category",
+									"request": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/category/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"category",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "<string>",
+													"description": "(Required) "
+												}
+											]
+										},
+										"description": "This endpoint updates the category name and description"
+									},
+									"response": [
+										{
+											"name": "Untitled Response",
+											"originalRequest": {
+												"method": "PATCH",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "//api/category/:id",
+													"path": [
+														"",
+														"api",
+														"category",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								},
+								{
+									"name": "Remove one category",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/category/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"category",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "<string>",
+													"description": "(Required) "
+												}
+											]
+										},
+										"description": "This endpoint removes a category (with onCascade: \"SET NULL\" for task)"
+									},
+									"response": [
+										{
+											"name": "Untitled Response",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [],
+												"url": {
+													"raw": "//api/category/:id",
+													"path": [
+														"",
+														"api",
+														"category",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "Create new Category",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{authToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Work\",\n    \"description\": \"work stuff\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/category",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"category"
+									]
+								},
+								"description": "This endpoint creates a new category"
+							},
+							"response": [
+								{
+									"name": "The category was succesfully created",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "//api/category",
+											"path": [
+												"",
+												"api",
+												"category"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{}"
+								}
+							]
+						},
+						{
+							"name": "Get all Categories",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{authToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/category",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"category"
+									]
+								},
+								"description": "This endpoint returns a list of all categories"
+							},
+							"response": [
+								{
+									"name": "Untitled Response",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "//api/category",
+											"path": [
+												"",
+												"api",
+												"category"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "tag",
+					"item": [
+						{
+							"name": "{id}",
+							"item": [
+								{
+									"name": "Get one Tag",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{authToken}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/tag/11171d3b-4459-4073-9a9c-114f147d9315",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"tag",
+												"11171d3b-4459-4073-9a9c-114f147d9315"
+											]
+										},
+										"description": "This endpoint returns a single tag"
+									},
+									"response": [
+										{
+											"name": "Untitled Response",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/tag/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"tag",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								},
+								{
+									"name": "Update one Tag",
+									"request": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/tag/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"tag",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "<string>",
+													"description": "(Required) "
+												}
+											]
+										},
+										"description": "This endpoint updates the tag name and color"
+									},
+									"response": [
+										{
+											"name": "Untitled Response",
+											"originalRequest": {
+												"method": "PATCH",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/tag/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"tag",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								},
+								{
+									"name": "Remove one Tag",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/tag/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"tag",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "<string>",
+													"description": "(Required) "
+												}
+											]
+										},
+										"description": "This endpoint removes a tag (with onCascade: \"SET NULL\" for task)"
+									},
+									"response": [
+										{
+											"name": "Untitled Response",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/tag/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"tag",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "Create new Tag",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{authToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"AndreaTag\",\n    \"color\": \"#000000\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/tag",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"tag"
+									]
+								},
+								"description": "This endpoint creates a new tag"
+							},
+							"response": [
+								{
+									"name": "The tag was succesfully created",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/tag",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"tag"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{}"
+								}
+							]
+						},
+						{
+							"name": "Get all Tags",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{authToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/tag",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"tag"
+									]
+								},
+								"description": "This endpoint returns a list of all tags"
+							},
+							"response": [
+								{
+									"name": "Untitled Response",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/tag",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"tag"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "auth",
+					"item": [
+						{
+							"name": "login",
+							"item": [
+								{
+									"name": "Login",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Login Successful\", function () {",
+													"    pm.response.to.have.status(201);",
+													"    let jsonData = pm.response.json();",
+													"    pm.expect(jsonData).to.have.property(\"token\");",
+													"    pm.collectionVariables.set(\"authToken\", jsonData.token);",
+													"    console.log(\"Auth Token saved:\", jsonData.token);",
+													"});",
+													""
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"email\": \"matteotrombin@gmail.com\",\n    \"password\": \"Andre2003no!\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/auth/login",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"auth",
+												"login"
+											]
+										},
+										"description": "This endpoint receives an email and a password and after validating them, returns a jwt token with the encrypted user infos"
+									},
+									"response": [
+										{
+											"name": "User succesfully logged in",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/auth/login",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"auth",
+														"login"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{}"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "register",
+							"item": [
+								{
+									"name": "Register",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Registration Successful\", function () {",
+													"    pm.response.to.have.status(201);",
+													"    let jsonData = pm.response.json();",
+													"    pm.expect(jsonData).to.have.property(\"token\");",
+													"    pm.collectionVariables.set(\"authToken\", jsonData.token);",
+													"    console.log(\"Auth Token saved:\", jsonData.token);",
+													"});",
+													""
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"email\": \"matteotrombin@gmail.com\",\n    \"password\": \"Andre2003no!\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/auth/register",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"auth",
+												"register"
+											]
+										},
+										"description": "This endpoint receives an email and a password and creates a new user if email is not already present"
+									},
+									"response": [
+										{
+											"name": "User succesfully created and logged in",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/auth/register",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"auth",
+														"register"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{}"
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "App Controller get Hello",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Untitled Response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "/"
+		},
+		{
+			"key": "authToken",
+			"value": ""
+		}
+	]
 }
