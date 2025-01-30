@@ -14,9 +14,10 @@ import {
   ApiBody,
   ApiCreatedResponse,
   ApiOperation,
-  ApiTags
+  ApiTags,
 } from '@nestjs/swagger';
 import UuidValidationPipe from 'src/common/pipes/UUIDValidation.pipe';
+import { GetUser } from 'src/common/decorators/getuser.decorator';
 
 @ApiTags('auth')
 @Controller('task')
@@ -37,8 +38,8 @@ export class TaskController {
     description: 'The task was succesfully created',
     type: Task,
   })
-  create(@Body() createTaskDto: CreateTaskDto) {
-    return this.taskService.create(createTaskDto);
+  create(@GetUser('id') userId: string, @Body() createTaskDto: CreateTaskDto) {
+    return this.taskService.create(userId, createTaskDto);
   }
 
   @Get()
@@ -47,8 +48,8 @@ export class TaskController {
     description:
       'This endpoint returns a list of all tasks with the name of the related tags, categories and users',
   })
-  findAll() {
-    return this.taskService.findAll();
+  findAll(@GetUser('id') userId: string) {
+    return this.taskService.findAll(userId);
   }
 
   @Get(':id')
@@ -71,15 +72,17 @@ export class TaskController {
     description: 'Updated Task information',
     type: UpdateTaskDto,
   })
-  update(@Param('id', UuidValidationPipe) id: string, @Body() updateTaskDto: UpdateTaskDto) {
+  update(
+    @Param('id', UuidValidationPipe) id: string,
+    @Body() updateTaskDto: UpdateTaskDto,
+  ) {
     return this.taskService.update(id, updateTaskDto);
   }
 
   @Delete(':id')
   @ApiOperation({
     summary: 'Remove one Task',
-    description:
-      'This endpoint removes a task',
+    description: 'This endpoint removes a task',
   })
   remove(@Param('id', UuidValidationPipe) id: string) {
     return this.taskService.remove(id);

@@ -12,6 +12,7 @@ import { Category, CreateCategoryDto } from './dto/create-category.dto';
 import { UpdateCategoryDto } from './dto/update-category.dto';
 import { ApiOperation, ApiBody, ApiCreatedResponse } from '@nestjs/swagger';
 import UuidValidationPipe from 'src/common/pipes/UUIDValidation.pipe';
+import { GetUser } from 'src/common/decorators/getuser.decorator';
 
 @Controller('category')
 export class CategoryController {
@@ -30,8 +31,11 @@ export class CategoryController {
     description: 'The category was succesfully created',
     type: Category,
   })
-  create(@Body() createCategoryDto: CreateCategoryDto) {
-    return this.categoryService.create(createCategoryDto);
+  create(
+    @GetUser('id') userId: string,
+    @Body() createCategoryDto: CreateCategoryDto,
+  ) {
+    return this.categoryService.create(userId, createCategoryDto);
   }
 
   @Get()
@@ -39,8 +43,8 @@ export class CategoryController {
     summary: 'Get all Categories',
     description: 'This endpoint returns a list of all categories',
   })
-  findAll() {
-    return this.categoryService.findAll();
+  findAll(@GetUser('id') userId: string) {
+    return this.categoryService.findAll(userId);
   }
 
   @Get(':id')

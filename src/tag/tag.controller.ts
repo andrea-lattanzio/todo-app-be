@@ -12,6 +12,7 @@ import { CreateTagDto, Tag } from './dto/create-tag.dto';
 import { UpdateTagDto } from './dto/update-tag.dto';
 import UuidValidationPipe from 'src/common/pipes/UUIDValidation.pipe';
 import { ApiOperation, ApiBody, ApiCreatedResponse } from '@nestjs/swagger';
+import { GetUser } from 'src/common/decorators/getuser.decorator';
 
 @Controller('tag')
 export class TagController {
@@ -30,8 +31,8 @@ export class TagController {
     description: 'The tag was succesfully created',
     type: Tag,
   })
-  create(@Body() createTagDto: CreateTagDto) {
-    return this.tagService.create(createTagDto);
+  create(@GetUser('id') userId: string, @Body() createTagDto: CreateTagDto) {
+    return this.tagService.create(userId, createTagDto);
   }
 
   @Get()
@@ -39,8 +40,8 @@ export class TagController {
     summary: 'Get all Tags',
     description: 'This endpoint returns a list of all tags',
   })
-  findAll() {
-    return this.tagService.findAll();
+  findAll(@GetUser('id') userId: string) {
+    return this.tagService.findAll(userId);
   }
 
   @Get(':id')
