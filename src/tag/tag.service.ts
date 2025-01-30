@@ -7,12 +7,15 @@ import { PrismaMySqlService } from 'src/config/database/mysql.service';
 export class TagService {
   constructor(private readonly prisma: PrismaMySqlService) {}
 
-  async create(createTagDto: CreateTagDto) {
-    return await this.prisma.tag.create({ data: createTagDto });
+  async create(userId: string, createTagDto: CreateTagDto) {
+    const tag = { ...createTagDto, userId };
+    return await this.prisma.tag.create({ data: tag });
   }
 
-  async findAll() {
-    return await this.prisma.tag.findMany();
+  async findAll(userId: string) {
+    return await this.prisma.tag.findMany({
+      where: { userId: userId },
+    });
   }
 
   async findOne(id: string) {

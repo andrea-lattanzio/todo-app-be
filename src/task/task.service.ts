@@ -2,12 +2,16 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateTaskDto } from './dto/create-task.dto';
 import { UpdateTaskDto, UpdateTaskRelationsDto } from './dto/update-task.dto';
 import { PrismaMySqlService } from 'src/config/database/mysql.service';
+import {
+  taskWithSelectedFields,
+  taskWithTagsAndCategories,
+} from './dto/queries.dto';
 @Injectable()
 export class TaskService {
   constructor(private readonly prisma: PrismaMySqlService) {}
 
-  async create(createTaskDto: CreateTaskDto) {
-    const { categories, tags, userId, ...taskData } = createTaskDto;
+  async create(userId: string, createTaskDto: CreateTaskDto) {
+    const { categories, tags, ...taskData } = createTaskDto;
     const task = {
       ...taskData,
       userId: userId,
@@ -21,50 +25,36 @@ export class TaskService {
     return await this.prisma.task.create({ data: task });
   }
 
-  async findAll() {
+  async findAll(userId: string) {
     return await this.prisma.task.findMany({
-      include: {
-        categories: {
-          select: {
-            name: true,
-          },
-        },
-        tags: {
-          select: {
-            name: true,
-            color: true,
-          },
-        },
-        user: {
-          select: {
-            email: true
-          },
-        },
+      where: {
+        userId: userId,
       },
+      include: taskWithSelectedFields.include,
     });
   }
 
   async findOne(id: string) {
     const task = await this.prisma.task.findUnique({
       where: { id },
-      include: {
-        user: true,
-        tags: true,
-        categories: true,
-      },
+      include: taskWithTagsAndCategories.include,
     });
 
-    if(!task) { throw new NotFoundException('No task with such id'); }
+    if (!task) {
+      throw new NotFoundException('No task with such id');
+    }
     return task;
   }
 
   async update(id: string, updateTaskDto: UpdateTaskDto) {
     const { updateRelations, ...taskData } = updateTaskDto;
-    const relationUpdates = updateRelations ? this.prepareUpdateRelations(updateRelations) : {};
+    const relationUpdates = updateRelations
+      ? this.prepareUpdateRelations(updateRelations)
+      : {};
     const updatedData = {
       ...taskData,
-      ...relationUpdates
-    }
+      ...relationUpdates,
+    };
 
     return await this.prisma.task.update({
       where: { id },
@@ -81,9 +71,8 @@ export class TaskService {
       categories: {
         connect: this.buildRelationOps(updateRelations.addCategories),
         disconnect: this.buildRelationOps(updateRelations.removeCategories),
-      }
+      },
     };
-  
   }
 
   private buildRelationOps(ids: string[] = []) {

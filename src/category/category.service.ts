@@ -7,16 +7,23 @@ import { PrismaMySqlService } from 'src/config/database/mysql.service';
 export class CategoryService {
   constructor(private readonly prisma: PrismaMySqlService) {}
 
-  async create(createCategoryDto: CreateCategoryDto) {
-    return await this.prisma.category.create({ data: createCategoryDto });
+  async create(userId: string, createCategoryDto: CreateCategoryDto) {
+    const category = { ...createCategoryDto, userId };
+    return await this.prisma.category.create({ data: category });
   }
 
-  async findAll() {
-    return await this.prisma.category.findMany();
+  async findAll(userId: string) {
+    return await this.prisma.category.findMany({
+      where: {
+        userId: userId,
+      },
+    });
   }
 
   async findOne(id: string) {
-    return await this.prisma.category.findUnique({ where: { id } });
+    return await this.prisma.category.findUnique({
+      where: { id },
+    });
   }
 
   async update(id: string, updateCategoryDto: UpdateCategoryDto) {
