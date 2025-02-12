@@ -2,8 +2,8 @@ import { BadRequestException, Injectable } from '@nestjs/common';
 import { UserService } from 'src/identity/user/services/user.service';
 import {
   BCRYPT_HASH_SALT,
+  ERROR_EMAIL_EXISTS,
   ERROR_INVALID_CREDENTIALS,
-  ERROR_USER_ALREADY_EXISTS,
   ERROR_USER_NOT_FOUND,
 } from '../constants/auth.constants';
 import * as bcrypt from 'bcrypt';
@@ -40,7 +40,7 @@ export class AuthService {
   async register(user: RegisterRequestDto): Promise<LoginResponseDto> {
     const existingUser = await this.userSrv.findOneByEmail(user.email);
     console.log(existingUser);
-    if(existingUser) throw new BadRequestException(ERROR_USER_ALREADY_EXISTS);
+    if(existingUser) throw new BadRequestException(ERROR_EMAIL_EXISTS);
     const hashedPassword = await bcrypt.hashSync(user.password, BCRYPT_HASH_SALT);
     const newUser: User = {
       ...user,
@@ -49,5 +49,11 @@ export class AuthService {
     }
     await this.userSrv.create(newUser);
     return this.login(newUser);
+  }
+
+  async profile(user: User) {
+    console.log(user);
+    if(!user) return;
+    return await this.userSrv.findOneByEmail(user.email);
   }
 }
