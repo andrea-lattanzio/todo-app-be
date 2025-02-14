@@ -1,8 +1,9 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateTaskDto } from './dto/create-task.dto';
-import { UpdateTaskDto, UpdateTaskRelationsDto } from './dto/update-task.dto';
+import { UpdateTaskDto } from './dto/update-task.dto';
 import { PrismaMySqlService } from 'src/config/database/mysql.service';
 import {
+  taskUpdateOmits,
   taskWithSelectedFields,
   taskWithTagsAndCategories,
 } from './dto/queries.dto';
@@ -47,36 +48,19 @@ export class TaskService {
   }
 
   async update(id: string, updateTaskDto: UpdateTaskDto) {
-    const { updateRelations, ...taskData } = updateTaskDto;
-    const relationUpdates = updateRelations
-      ? this.prepareUpdateRelations(updateRelations)
-      : {};
-    const updatedData = {
-      ...taskData,
-      ...relationUpdates,
-    };
+    const { categories, ...taskData } = updateTaskDto;
 
     return await this.prisma.task.update({
       where: { id },
-      data: updatedData,
+      data: {
+        ...taskData,
+        categories: {
+          set: categories?.map((id: string) => ({ id })) || [],
+        },
+      },
+      omit: taskUpdateOmits.omit,
+      include: taskWithTagsAndCategories.include,
     });
-  }
-
-  private prepareUpdateRelations(updateRelations: UpdateTaskRelationsDto) {
-    return {
-      tags: {
-        connect: this.buildRelationOps(updateRelations.addTags),
-        disconnect: this.buildRelationOps(updateRelations.removeTags),
-      },
-      categories: {
-        connect: this.buildRelationOps(updateRelations.addCategories),
-        disconnect: this.buildRelationOps(updateRelations.removeCategories),
-      },
-    };
-  }
-
-  private buildRelationOps(ids: string[] = []) {
-    return ids.length > 0 ? ids.map((id) => ({ id })) : undefined;
   }
 
   async remove(id: string) {
