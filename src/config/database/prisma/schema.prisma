@@ -16,7 +16,6 @@ model User {
   updatedAt     DateTime @updatedAt
 
   tasks      Task[]
-  tags       Tag[]
   categories Category[]
 }
 
@@ -33,21 +32,6 @@ model Task {
   user       User       @relation(fields: [userId], references: [id])
   userId     String
   categories Category[]
-  tags       Tag[]
-}
-
-model Tag {
-  id        String   @id @default(uuid())
-  name      String   @unique
-  color     String
-  createdAt DateTime @default(now())
-
-  userId String
-  user   User   @relation(fields: [userId], references: [id])
-
-  tasks Task[]
-
-  @@unique([name, userId])
 }
 
 model Category {
