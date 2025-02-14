@@ -22,7 +22,7 @@ export class AuthService {
     const user = await this.userSrv.findOneByEmail(email);
     if (!user) throw new BadRequestException(ERROR_USER_NOT_FOUND);
     const match = bcrypt.compareSync(password, user.password);
-    if (!match) throw new BadRequestException(ERROR_INVALID_CREDENTIALS + email);
+    if (!match) throw new BadRequestException(ERROR_INVALID_CREDENTIALS);
     return user;
   }
 
@@ -39,7 +39,6 @@ export class AuthService {
 
   async register(user: RegisterRequestDto): Promise<LoginResponseDto> {
     const existingUser = await this.userSrv.findOneByEmail(user.email);
-    console.log(existingUser);
     if(existingUser) throw new BadRequestException(ERROR_EMAIL_EXISTS);
     const hashedPassword = await bcrypt.hashSync(user.password, BCRYPT_HASH_SALT);
     const newUser: User = {
@@ -52,7 +51,6 @@ export class AuthService {
   }
 
   async profile(user: User) {
-    console.log(user);
     if(!user) return;
     return await this.userSrv.findOneByEmail(user.email);
   }

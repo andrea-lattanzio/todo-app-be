@@ -12,30 +12,6 @@ import {
   ValidateNested,
 } from 'class-validator';
 
-export class UpdateTaskRelationsDto {
-  @IsOptional()
-  @IsArray()
-  @IsUUID('all', { each: true })
-  addTags?: string[];
-
-  @IsOptional()
-  @IsArray()
-  @IsUUID('all', { each: true })
-  removeTags?: string[];
-
-  @IsOptional()
-  @IsArray()
-  @IsUUID('all', { each: true })
-  @IsNotEmpty()
-  addCategories?: string[];
-
-  @IsOptional()
-  @IsArray()
-  @IsUUID('all', { each: true })
-  @IsNotEmpty()
-  removeCategories?: string[];
-}
-
 export class UpdateTaskDto {
   @IsNotEmpty()
   @IsString()
@@ -61,7 +37,8 @@ export class UpdateTaskDto {
   status?: Status = Status.PENDING;
 
   @IsOptional()
-  @ValidateNested()
-  @Type(() => UpdateTaskRelationsDto)
-  updateRelations?: UpdateTaskRelationsDto;
+  @IsArray()
+  @IsUUID('all', { each: true })
+  @IsNotEmpty()
+  categories?: string[];
 }
