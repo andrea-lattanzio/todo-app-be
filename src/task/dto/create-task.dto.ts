@@ -58,12 +58,6 @@ export class CreateTaskDto {
     message: 'a Task cannot have more than three categories related to it',
   })
   categories?: string[];
-
-  @IsOptional()
-  @IsArray()
-  @IsUUID('all', { each: true })
-  @IsNotEmpty()
-  tags?: string[];
 }
 
 export class Task {

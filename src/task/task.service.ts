@@ -12,13 +12,10 @@ export class TaskService {
   constructor(private readonly prisma: PrismaMySqlService) {}
 
   async create(userId: string, createTaskDto: CreateTaskDto) {
-    const { categories, tags, ...taskData } = createTaskDto;
+    const { categories, ...taskData } = createTaskDto;
     const task = {
       ...taskData,
       userId: userId,
-      tags: {
-        connect: tags?.map((id: string) => ({ id })) || [],
-      },
       categories: {
         connect: categories?.map((id: string) => ({ id })) || [],
       },
