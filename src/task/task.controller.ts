@@ -8,8 +8,8 @@ import {
   Delete,
 } from '@nestjs/common';
 import { TaskService } from './task.service';
-import { CreateTaskDto, Task } from './dto/create-task.dto';
-import { UpdateTaskDto } from './dto/update-task.dto';
+import { CreateTaskDto } from './dtos/create-task.dto';
+import { UpdateTaskDto } from './dtos/update-task.dto';
 import {
   ApiBody,
   ApiCreatedResponse,
@@ -18,6 +18,7 @@ import {
 } from '@nestjs/swagger';
 import UuidValidationPipe from 'src/common/pipes/UUIDValidation.pipe';
 import { GetUser } from 'src/common/decorators/getuser.decorator';
+import { TaskDto } from './dtos/task.dto';
 
 @ApiTags('auth')
 @Controller('task')
@@ -36,9 +37,12 @@ export class TaskController {
   })
   @ApiCreatedResponse({
     description: 'The task was succesfully created',
-    type: Task,
+    type: TaskDto,
   })
-  create(@GetUser('id') userId: string, @Body() createTaskDto: CreateTaskDto) {
+  create(
+    @GetUser('id') userId: string,
+    @Body() createTaskDto: CreateTaskDto,
+  ): Promise<TaskDto> {
     return this.taskService.create(userId, createTaskDto);
   }
 
@@ -48,7 +52,7 @@ export class TaskController {
     description:
       'This endpoint returns a list of all tasks with the name of the related tags, categories and users',
   })
-  findAll(@GetUser('id') userId: string) {
+  findAll(@GetUser('id') userId: string): Promise<TaskDto[]> {
     return this.taskService.findAll(userId);
   }
 
@@ -58,7 +62,7 @@ export class TaskController {
     description:
       'This endpoint returns a single tag with all the related entities in detail',
   })
-  findOne(@Param('id', UuidValidationPipe) id: string) {
+  findOne(@Param('id', UuidValidationPipe) id: string): Promise<TaskDto> {
     return this.taskService.findOne(id);
   }
 
@@ -75,7 +79,7 @@ export class TaskController {
   update(
     @Param('id', UuidValidationPipe) id: string,
     @Body() updateTaskDto: UpdateTaskDto,
-  ) {
+  ): Promise<TaskDto> {
     return this.taskService.update(id, updateTaskDto);
   }
 
@@ -84,7 +88,7 @@ export class TaskController {
     summary: 'Remove one Task',
     description: 'This endpoint removes a task',
   })
-  remove(@Param('id', UuidValidationPipe) id: string) {
+  remove(@Param('id', UuidValidationPipe) id: string): Promise<TaskDto> {
     return this.taskService.remove(id);
   }
 }
