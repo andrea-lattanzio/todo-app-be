@@ -24,7 +24,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Task"
+                  "$ref": "#/components/schemas/TaskDto"
                 }
               }
             }
@@ -154,7 +154,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Category"
+                  "$ref": "#/components/schemas/CategoryDto"
                 }
               }
             }
@@ -246,121 +246,6 @@
         }
       }
     },
-    "/api/tag": {
-      "post": {
-        "operationId": "TagController_create",
-        "summary": "Create new Tag",
-        "description": "This endpoint creates a new tag",
-        "parameters": [],
-        "requestBody": {
-          "required": true,
-          "description": "Tag name and color",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CreateTagDto"
-              }
-            }
-          }
-        },
-        "responses": {
-          "201": {
-            "description": "The tag was succesfully created",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Tag"
-                }
-              }
-            }
-          }
-        }
-      },
-      "get": {
-        "operationId": "TagController_findAll",
-        "summary": "Get all Tags",
-        "description": "This endpoint returns a list of all tags",
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": ""
-          }
-        }
-      }
-    },
-    "/api/tag/{id}": {
-      "get": {
-        "operationId": "TagController_findOne",
-        "summary": "Get one Tag",
-        "description": "This endpoint returns a single tag",
-        "parameters": [
-          {
-            "name": "id",
-            "required": true,
-            "in": "path",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": ""
-          }
-        }
-      },
-      "patch": {
-        "operationId": "TagController_update",
-        "summary": "Update one Tag",
-        "description": "This endpoint updates the tag name and color",
-        "parameters": [
-          {
-            "name": "id",
-            "required": true,
-            "in": "path",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "description": "Updated tag information",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateTagDto"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": ""
-          }
-        }
-      },
-      "delete": {
-        "operationId": "TagController_remove",
-        "summary": "Remove one Tag",
-        "description": "This endpoint removes a tag (with onCascade: \"SET NULL\" for task)",
-        "parameters": [
-          {
-            "name": "id",
-            "required": true,
-            "in": "path",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": ""
-          }
-        }
-      }
-    },
     "/api/auth/login": {
       "post": {
         "operationId": "AuthController_login",
@@ -423,6 +308,17 @@
         }
       }
     },
+    "/api/auth": {
+      "get": {
+        "operationId": "AuthController_profile",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
     "/api": {
       "get": {
         "operationId": "AppController_getHello",
@@ -456,7 +352,7 @@
         "type": "object",
         "properties": {}
       },
-      "Task": {
+      "TaskDto": {
         "type": "object",
         "properties": {}
       },
@@ -468,23 +364,11 @@
         "type": "object",
         "properties": {}
       },
-      "Category": {
+      "CategoryDto": {
         "type": "object",
         "properties": {}
       },
       "UpdateCategoryDto": {
-        "type": "object",
-        "properties": {}
-      },
-      "CreateTagDto": {
-        "type": "object",
-        "properties": {}
-      },
-      "Tag": {
-        "type": "object",
-        "properties": {}
-      },
-      "UpdateTagDto": {
         "type": "object",
         "properties": {}
       },
