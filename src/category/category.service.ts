@@ -1,32 +1,44 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { CreateCategoryDto } from './dto/create-category.dto';
 import { UpdateCategoryDto } from './dto/update-category.dto';
 import { PrismaMySqlService } from 'src/config/database/mysql.service';
+import { CategoryDto } from './dto/category.dto';
 
 @Injectable()
 export class CategoryService {
   constructor(private readonly prisma: PrismaMySqlService) {}
 
-  async create(userId: string, createCategoryDto: CreateCategoryDto) {
+  async create(
+    userId: string,
+    createCategoryDto: CreateCategoryDto,
+  ): Promise<CategoryDto> {
     const category = { ...createCategoryDto, userId };
-    return await this.prisma.category.create({ data: category });
+    const createdCategory = await this.prisma.category.create({
+      data: category,
+    });
+    return new CategoryDto(createdCategory);
   }
 
-  async findAll(userId: string) {
-    return await this.prisma.category.findMany({
+  async findAll(userId: string): Promise<CategoryDto[]> {
+    const categories = await this.prisma.category.findMany({
       where: {
         userId: userId,
       },
     });
+    return CategoryDto.fromEntities(categories);
   }
 
   async findOne(id: string) {
-    return await this.prisma.category.findUnique({
+    const category = await this.prisma.category.findUnique({
       where: { id },
     });
+    return new CategoryDto(category);
   }
 
-  async update(id: string, updateCategoryDto: UpdateCategoryDto) {
+  async update(
+    id: string,
+    updateCategoryDto: UpdateCategoryDto,
+  ): Promise<CategoryDto> {
     const updatedData = {};
     const category = await this.prisma.category.findUniqueOrThrow({
       where: { id },
@@ -38,16 +50,19 @@ export class CategoryService {
     });
 
     if (Object.keys(updatedData).length === 0) {
-      return category;
+      return new CategoryDto(category);
     }
 
-    return await this.prisma.category.update({
+    const updatedCategory = await this.prisma.category.update({
       where: { id },
       data: updatedData,
     });
+
+    return new CategoryDto(updatedCategory);
   }
 
-  async remove(id: string) {
-    return await this.prisma.category.delete({ where: { id } });
+  async remove(id: string): Promise<CategoryDto> {
+    const deleted = await this.prisma.category.delete({ where: { id } });
+    return new CategoryDto(deleted);
   }
 }

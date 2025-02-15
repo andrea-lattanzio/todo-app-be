@@ -8,11 +8,12 @@ import {
   Delete,
 } from '@nestjs/common';
 import { CategoryService } from './category.service';
-import { Category, CreateCategoryDto } from './dto/create-category.dto';
+import { CreateCategoryDto } from './dto/create-category.dto';
 import { UpdateCategoryDto } from './dto/update-category.dto';
 import { ApiOperation, ApiBody, ApiCreatedResponse } from '@nestjs/swagger';
 import UuidValidationPipe from 'src/common/pipes/UUIDValidation.pipe';
 import { GetUser } from 'src/common/decorators/getuser.decorator';
+import { CategoryDto } from './dto/category.dto';
 
 @Controller('category')
 export class CategoryController {
@@ -29,7 +30,7 @@ export class CategoryController {
   })
   @ApiCreatedResponse({
     description: 'The category was succesfully created',
-    type: Category,
+    type: CategoryDto,
   })
   create(
     @GetUser('id') userId: string,
@@ -43,7 +44,7 @@ export class CategoryController {
     summary: 'Get all Categories',
     description: 'This endpoint returns a list of all categories',
   })
-  findAll(@GetUser('id') userId: string) {
+  findAll(@GetUser('id') userId: string): Promise<CategoryDto[]> {
     return this.categoryService.findAll(userId);
   }
 
@@ -52,7 +53,7 @@ export class CategoryController {
     summary: 'Get one Category',
     description: 'This endpoint returns a single category',
   })
-  findOne(@Param('id', UuidValidationPipe) id: string) {
+  findOne(@Param('id', UuidValidationPipe) id: string): Promise<CategoryDto> {
     return this.categoryService.findOne(id);
   }
 
@@ -68,7 +69,7 @@ export class CategoryController {
   update(
     @Param('id', UuidValidationPipe) id: string,
     @Body() updateCategoryDto: UpdateCategoryDto,
-  ) {
+  ): Promise<CategoryDto> {
     return this.categoryService.update(id, updateCategoryDto);
   }
 
@@ -78,7 +79,7 @@ export class CategoryController {
     description:
       'This endpoint removes a category (with onCascade: "SET NULL" for task)',
   })
-  remove(@Param('id', UuidValidationPipe) id: string) {
+  remove(@Param('id', UuidValidationPipe) id: string): Promise<CategoryDto> {
     return this.categoryService.remove(id);
   }
 }
