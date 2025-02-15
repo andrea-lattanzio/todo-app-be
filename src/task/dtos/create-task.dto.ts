@@ -59,14 +59,3 @@ export class CreateTaskDto {
   })
   categories?: string[];
 }
-
-export class Task {
-  id: string;
-  name: string;
-  description: string;
-  dueDate: Date;
-  status: string;
-  priority: string;
-  createdAt?: Date;
-  updatedAt?: Date;
-}
