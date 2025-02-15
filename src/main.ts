@@ -41,15 +41,13 @@ async function bootstrap() {
   app.use(helmet({ contentSecurityPolicy: false }));
   app.enableCors();
 
-  app.useGlobalFilters(new PrismaExceptionFilter());
-
-  const configService: ConfigService = app.get<ConfigService>(ConfigService);
-  // const production = configService.getOrThrow('NODE_ENV');
-  // if (production === 'production') {
-  //   app.useGlobalFilters(new ProductionPrismaExceptionFilter());
-  // } else if (production === 'development') {
-  //   app.useGlobalFilters(new PrismaExceptionFilter());
-  // }
+  const configService = new ConfigService();
+  const production = configService.getOrThrow('NODE_ENV');
+  if (production === 'production') {
+    app.useGlobalFilters(new ProductionPrismaExceptionFilter());
+  } else if (production === 'development') {
+    app.useGlobalFilters(new PrismaExceptionFilter());
+  }
 
   const port: number = configService.getOrThrow<number>('PORT');
   await app.listen(port);
