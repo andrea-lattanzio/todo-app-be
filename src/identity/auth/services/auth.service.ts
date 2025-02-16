@@ -47,7 +47,8 @@ export class AuthService {
       password: hashedPassword
     }
     await this.userSrv.create(newUser);
-    return this.login(newUser);
+    const createdUser = await this.userSrv.findOneByEmail(user.email);
+    return this.login(createdUser);
   }
 
   async profile(user: User) {

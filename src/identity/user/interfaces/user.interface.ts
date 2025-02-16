@@ -1,7 +1,7 @@
 export interface User {
   id?: string;
   email: string;
-  authProviders: AuthProvider;
+  authProviders: AuthProvider | string;
   password: string;
 }
 
