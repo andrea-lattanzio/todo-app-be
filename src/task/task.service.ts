@@ -49,14 +49,17 @@ export class TaskService {
   async update(id: string, updateTaskDto: UpdateTaskDto): Promise<TaskDto> {
     const { categories, ...taskData } = updateTaskDto;
 
+    const updateData: any = { ...taskData };
+
+    if (categories) {
+      updateData.categories = {
+        set: categories.map((id: string) => ({ id })),
+      };
+    }
+
     const updatedTask = await this.prisma.task.update({
       where: { id },
-      data: {
-        ...taskData,
-        categories: {
-          set: categories?.map((id: string) => ({ id })) || [],
-        },
-      },
+      data: updateData,
     });
 
     return new TaskDto(updatedTask);
