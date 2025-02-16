@@ -29,7 +29,7 @@ export class CategoryService {
   }
 
   async findOne(id: string) {
-    const category = await this.prisma.category.findUnique({
+    const category = await this.prisma.category.findUniqueOrThrow({
       where: { id },
     });
     return new CategoryDto(category);

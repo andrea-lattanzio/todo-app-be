@@ -10,6 +10,8 @@ import { PrismaExceptionFilter } from './config/database/dev.exception-filter';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+  const configService = app.get(ConfigService);
+
   app.setGlobalPrefix('/api');
   app.useGlobalPipes(
     new ValidationPipe({
@@ -41,15 +43,14 @@ async function bootstrap() {
   app.use(helmet({ contentSecurityPolicy: false }));
   app.enableCors();
 
-  const configService = new ConfigService();
-  const production = configService.getOrThrow('NODE_ENV');
-  if (production === 'production') {
+  const env = configService.getOrThrow('NODE_ENV');
+  if (env === 'production') {
     app.useGlobalFilters(new ProductionPrismaExceptionFilter());
-  } else if (production === 'development') {
+  } else if (env === 'development') {
     app.useGlobalFilters(new PrismaExceptionFilter());
   }
 
-  const port: number = configService.getOrThrow<number>('PORT');
+  const port: number = configService.get<number>('PORT') || 3000;
   await app.listen(port);
   console.log(`🚀 Application is running on: http://localhost:${port}/api`);
 }

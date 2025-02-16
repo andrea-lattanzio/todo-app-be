@@ -9,7 +9,7 @@ export class PrismaExceptionFilter extends BaseExceptionFilter {
     const context = host.switchToHttp();
     const response = context.getResponse<Response>();
     const message = exception.message.replace(/\n/g, '') || 'Internal server error';
-    const entity = exception.meta || 'entity';
+    const entity = exception.meta;
     let statusCode: number = HttpStatus.INTERNAL_SERVER_ERROR;
 
     switch (exception.code) {

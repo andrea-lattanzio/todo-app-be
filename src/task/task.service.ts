@@ -34,14 +34,10 @@ export class TaskService {
   }
 
   async findOne(id: string): Promise<TaskDto> {
-    const task = await this.prisma.task.findUnique({
+    const task = await this.prisma.task.findUniqueOrThrow({
       where: { id },
       include: { categories: true },
     });
-
-    if (!task) {
-      throw new NotFoundException('No task with such id');
-    }
 
     return new TaskDto(task);
   }

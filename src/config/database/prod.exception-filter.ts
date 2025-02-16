@@ -8,6 +8,7 @@ export class ProductionPrismaExceptionFilter extends BaseExceptionFilter {
   catch(exception: PrismaClientKnownRequestError, host: ArgumentsHost) {
     const context = host.switchToHttp();
     const response = context.getResponse<Response>();
+    const entity = exception.meta;
     let statusCode: number = HttpStatus.INTERNAL_SERVER_ERROR;
 
     switch (exception.code) {
@@ -15,19 +16,26 @@ export class ProductionPrismaExceptionFilter extends BaseExceptionFilter {
         statusCode = HttpStatus.NOT_FOUND;
         response
           .status(statusCode)
-          .json({ statusCode: statusCode, message: 'Entity was not found' });
+          .json({
+            statusCode: statusCode,
+            message: `${entity.modelName} was not found`,
+          });
         break;
       case 'P2002':
       case 'P2003':
-        statusCode = HttpStatus.BAD_REQUEST;
+        statusCode = HttpStatus.CONFLICT;
         response
           .status(statusCode)
-          .json({ statusCode: statusCode, message: 'Foreign key violation' });
+          .json({
+            statusCode: statusCode,
+            message: `${entity.modelName} name is already present`,
+          });
         break;
       default:
-        response
-          .status(statusCode)
-          .json({ statusCode: statusCode, message: "An error occured during the request" });
+        response.status(statusCode).json({
+          statusCode: statusCode,
+          message: 'An error occured during the request',
+        });
         break;
     }
   }
