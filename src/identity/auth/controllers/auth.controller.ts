@@ -6,9 +6,9 @@ import {
   Body,
   Get,
 } from '@nestjs/common';
-import { Public } from '../../../../shared/decorators/public.decorator';
+import { Public } from '../../../shared/decorators/public.decorator';
 import { AuthService } from '../services/auth.service';
-import { LocalAuthGuard } from 'shared/guards/local.guard';
+import { LocalAuthGuard } from 'src/shared/guards/local.guard';
 import {
   LoginRequestDTO,
   LoginResponseDto,
@@ -16,7 +16,7 @@ import {
 } from '../dtos/auth.dtos';
 import { ApiBody, ApiOkResponse, ApiOperation } from '@nestjs/swagger';
 import { User } from 'src/identity/user/interfaces/user.interface';
-import { GetUser } from 'shared/decorators/getuser.decorator';
+import { GetUser } from 'src/shared/decorators/getuser.decorator';
 
 @Controller('auth')
 export class AuthController {

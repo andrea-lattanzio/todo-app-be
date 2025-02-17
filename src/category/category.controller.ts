@@ -11,8 +11,8 @@ import { CategoryService } from './category.service';
 import { CreateCategoryDto } from './dto/create-category.dto';
 import { UpdateCategoryDto } from './dto/update-category.dto';
 import { ApiOperation, ApiBody, ApiCreatedResponse } from '@nestjs/swagger';
-import UuidValidationPipe from 'shared/pipes/UUIDValidation.pipe';
-import { GetUser } from 'shared/decorators/getuser.decorator';
+import UuidValidationPipe from 'src/shared/pipes/UUIDValidation.pipe';
+import { GetUser } from 'src/shared/decorators/getuser.decorator';
 import { CategoryDto } from './dto/category.dto';
 
 @Controller('category')
