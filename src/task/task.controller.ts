@@ -16,8 +16,8 @@ import {
   ApiOperation,
   ApiTags,
 } from '@nestjs/swagger';
-import UuidValidationPipe from 'src/common/pipes/UUIDValidation.pipe';
-import { GetUser } from 'src/common/decorators/getuser.decorator';
+import UuidValidationPipe from 'shared/pipes/UUIDValidation.pipe';
+import { GetUser } from 'shared/decorators/getuser.decorator';
 import { TaskDto } from './dtos/task.dto';
 
 @ApiTags('auth')
