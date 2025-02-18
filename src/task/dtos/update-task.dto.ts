@@ -38,7 +38,5 @@ export class UpdateTaskDto {
 
   @IsOptional()
   @IsArray()
-  @IsUUID('all', { each: true })
-  @IsNotEmpty()
   categories?: string[];
 }
