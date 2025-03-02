@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { AuthController } from './controllers/auth.controller';
-import { PrismaMySqlService } from 'src/config/database/mysql.service';
+import { PrismaDatabaseService } from 'src/config/database/database.service';
 import { AuthService } from './services/auth.service';
 import { UserModule } from '../user/user.module';
 import { JwtModule } from '@nestjs/jwt';
@@ -28,6 +28,12 @@ import { UserService } from '../user/services/user.service';
     }),
   ],
   controllers: [AuthController],
-  providers: [AuthService, UserService, PrismaMySqlService, LocalStrategy, JwtStrategy],
+  providers: [
+    AuthService,
+    UserService,
+    PrismaDatabaseService,
+    LocalStrategy,
+    JwtStrategy,
+  ],
 })
 export class AuthModule {}

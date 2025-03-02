@@ -1,10 +1,10 @@
 import { Injectable } from '@nestjs/common';
-import { PrismaMySqlService } from 'src/config/database/mysql.service';
+import { PrismaDatabaseService } from 'src/config/database/database.service';
 import { User } from '../interfaces/user.interface';
 
 @Injectable()
 export class UserService {
-  constructor(private readonly prisma: PrismaMySqlService) {}
+  constructor(private readonly prisma: PrismaDatabaseService) {}
 
   async create(user: User) {
     return await this.prisma.user.create({ data: user });

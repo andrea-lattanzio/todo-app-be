@@ -1,12 +1,12 @@
 import { Injectable } from '@nestjs/common';
 import { CreateCategoryDto } from './dto/create-category.dto';
 import { UpdateCategoryDto } from './dto/update-category.dto';
-import { PrismaMySqlService } from 'src/config/database/mysql.service';
+import { PrismaDatabaseService } from 'src/config/database/database.service';
 import { CategoryDto } from './dto/category.dto';
 
 @Injectable()
 export class CategoryService {
-  constructor(private readonly prisma: PrismaMySqlService) {}
+  constructor(private readonly prisma: PrismaDatabaseService) {}
 
   async create(
     userId: string,

@@ -1,13 +1,13 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateTaskDto } from './dtos/create-task.dto';
 import { UpdateTaskDto } from './dtos/update-task.dto';
-import { PrismaMySqlService } from 'src/config/database/mysql.service';
+import { PrismaDatabaseService } from 'src/config/database/database.service';
 import { Task } from '@prisma/client';
 import { TaskDto } from './dtos/task.dto';
 
 @Injectable()
 export class TaskService {
-  constructor(private readonly prisma: PrismaMySqlService) {}
+  constructor(private readonly prisma: PrismaDatabaseService) {}
 
   async create(userId: string, createTaskDto: CreateTaskDto): Promise<TaskDto> {
     const { categories, ...taskData } = createTaskDto;
